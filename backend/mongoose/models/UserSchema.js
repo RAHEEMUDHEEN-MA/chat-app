@@ -11,6 +11,6 @@ const UserSchema = mongoose.Schema({
   connections: { type: Array, default: [] }
 });
 
-const User = mongoose.model("chataappusers", UserSchema);
+const User = mongoose.model("Users", UserSchema);
 
 module.exports = User;
