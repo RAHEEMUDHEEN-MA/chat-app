@@ -7,7 +7,7 @@ const appRouter=express.Router()
 
 appRouter.route('/test').post(test)
 appRouter.route('/ok').get(tester) 
-appRouter.route('/signup').get(SignUp)
+appRouter.route('/signup').post(SignUp)
 
 
 module.exports=appRouter
