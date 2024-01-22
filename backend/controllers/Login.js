@@ -9,9 +9,9 @@ const Login = async (req, res) => {
       res.status(200).json({ message: "login success" ,userdata } );
     } else {
       if (!userdata) {
-        res.status(404).json({ message: "invalid mobile number" });
+        res.status(404).json({ message: "Mobile number is not registered" });
       } else {
-        res.status(402).json({ message: "incorrect password" });
+        res.status(401).json({  success: false, message: 'Incorrect password' });
       }
     }
   } catch (error) {

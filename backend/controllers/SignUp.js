@@ -4,9 +4,9 @@ const bcrypt = require("bcrypt");
 const SignUp = async (req, res) => {
   try {
     const { name, email, dob, gender, mobile, password } = req.body;
-    const existingEmail=await User.findOne({email})
-    if (existingEmail) {
-      return res.status(400).json({ error: "Email already registered" });
+    const existingmobile=await User.findOne({mobile})
+    if (existingmobile) {
+      return res.status(400).json({ error: "Mobile number is already used" });
     }
 
     const salt = await bcrypt.genSalt(5);
