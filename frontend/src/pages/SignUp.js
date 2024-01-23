@@ -150,7 +150,7 @@ const SignUp = () => {
             <Form.Control
               type={showPassword ? "text" : "password"}
               placeholder="Password"
-              // pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=])(?!.*\s).*"
+              pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=])(?!.*\s).*"
               title="Password must contain at least one number, one letter, and one special character."
               required
               onChange={(e) => setPassword(e.target.value)}

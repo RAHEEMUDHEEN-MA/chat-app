@@ -1,0 +1,28 @@
+/* a,div{
+    border: 1px solid;
+} */
+.chat{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* background-color: blueviolet; */
+}
+.chat_header{
+    /* background-color: bisque; */
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.chat_body{
+    height:100%
+
+}
+
+.chat_footer{
+    display: flex;
+    flex-direction: row;
+}

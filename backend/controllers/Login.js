@@ -6,7 +6,7 @@ const Login = async (req, res) => {
   try {
     const userdata = await User.findOne({ mobile });
     if (userdata && await bcrypt.compare(password, userdata.password)) {
-      res.status(200).json({ message: "login success" ,userdata } );
+      res.status(200).json({ message: "login success" ,userdata} );
     } else {
       if (!userdata) {
         res.status(404).json({ message: "Mobile number is not registered" });
