@@ -7,6 +7,11 @@ const AddFriend = ({ userdata }) => {
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setsearchResult] = useState();
   const [showtile, setShowtile] = useState(false);
+  //   const senderID=userdata._id
+  const [recieverID, setRecieverID] = useState();
+  const [senderID, setsenderID] = useState();
+  console.log("recieverID  :", recieverID)
+  console.log("senderID :", senderID)
 
   console.log("user who search : ", userdata);
 
@@ -21,10 +26,30 @@ const AddFriend = ({ userdata }) => {
       // console.log(response.data)
       setsearchResult(response.data);
       setShowtile(!showtile);
+        setRecieverID(searchResult._id)
       console.log("search result", searchResult);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const sendRequest = async () => {
+    setsenderID(userdata._id);
+    console.log("senderID:".senderID);
+    setRecieverID(searchResult._id);
+    console.log("senderID:".senderID);
+    try {
+      if (senderID !== "" && recieverID !== "") {
+        const response = await axios.post(
+          "http://localhost:7070/chatapp/sendfriendrequest",
+          {
+            sender_Id: senderID,
+            reciever_Id: recieverID,
+          }
+        );
+        console.log(response);
+      }
+    } catch (error) {}
   };
 
   return (
@@ -49,22 +74,23 @@ const AddFriend = ({ userdata }) => {
 
       {showtile ? (
         <div className="userTile">
-         <div className="user">
-         <div className="userdp">
-            <h1>{searchResult.name.charAt(0)}</h1>
-          </div>
-          <div className="usermeta">
-            <div>
-              <h4>{searchResult.name}</h4>
+          <div className="user">
+            <div className="userdp">
+              <h1>{searchResult.name.charAt(0)}</h1>
             </div>
-            <div>
-              <p>{searchResult.mobile+"8113044223"}</p>
+            <div className="usermeta">
+              <div>
+                <h4>{searchResult.name}</h4>
+              </div>
+              <div>
+                <p>{searchResult.mobile}</p>
+                <p>{searchResult._id}</p>
+              </div>
             </div>
           </div>
-         </div>
-         <div className="btnContainer">
-            <Button >send Request</Button>
-         </div>
+          <div className="btnContainer">
+            <Button onClick={sendRequest}>send Request</Button>
+          </div>
         </div>
       ) : (
         <span>no results</span>

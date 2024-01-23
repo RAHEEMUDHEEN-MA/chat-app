@@ -12,7 +12,7 @@ const SideNavBar = ({userdata}) => {
        <div className='top_bar'>
             
       <div className='navbar_profile'> <NavLink  className="linkss" to="/profile">
-         {/* {data.name.charAt(0)} */}
+         {/* {userdata.name.charAt(0)} */}
         </NavLink>
       </div>
         <NavLink  className="linkss" to="/home/chat">

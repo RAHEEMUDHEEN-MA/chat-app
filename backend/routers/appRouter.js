@@ -22,7 +22,7 @@ appRouter.route('/signup').post(SignUp)
 appRouter.route('/login').post(Login)
 appRouter.route('/search/:mobile').get(FindUser)
 appRouter.route('/chatlist/:id').get(ViewConnections)
-appRouter.route('/:id/sendfriendrequest').post(SendFriendRequest)
+appRouter.route('/sendfriendrequest').post(SendFriendRequest)
 appRouter.route('/:id/viewfriendrequest').get(ViewFriendRequest)
 appRouter.route('/:rid/acceptrequest').put(AcceptFriendRequest)
 
