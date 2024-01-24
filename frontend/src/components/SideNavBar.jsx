@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../assets/styles/SideNavBar.css'
 import { Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 
 const SideNavBar = ({userdata}) => {
+  const USERDP = userdata?.name? userdata.name.charAt(0) : '';
+
  
   
   return (
@@ -12,7 +14,7 @@ const SideNavBar = ({userdata}) => {
        <div className='top_bar'>
             
       <div className='navbar_profile'> <NavLink  className="linkss" to="/profile">
-         {/* {userdata.name.charAt(0)} */}
+        {USERDP}
         </NavLink>
       </div>
         <NavLink  className="linkss" to="/home/chat">
@@ -23,11 +25,13 @@ const SideNavBar = ({userdata}) => {
         search
         </NavLink>
 
-        <NavLink  className="linkss" to="/requests">
+        <NavLink  className="linkss" to="/home/requests">
         reqs
         </NavLink>
         </div>
-        <div className='bottom_bar'><a href="">logout</a></div>
+        <NavLink  className="linkss" to="/">
+        Logout
+        </NavLink>
        
     </div>
   )

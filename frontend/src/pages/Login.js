@@ -25,7 +25,7 @@ const Login = ({setuserdata}) => {
         );
 
         console.log(response.data.userdata);
-        alert(response.data.message);
+        // alert(response.data.message);
         setuserdata(response.data.userdata)
         setAuthfailed("");
         setMobileError("");

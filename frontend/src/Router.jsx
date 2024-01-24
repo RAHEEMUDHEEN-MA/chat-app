@@ -7,6 +7,7 @@ import SideNavBar from "./components/SideNavBar";
 import ChatList from "./components/ChatList";
 import Chat from "./components/Chat";
 import AddFriend from "./components/AddFriend";
+import ViewRequests from "./components/ViewRequests";
 
 const Router = () => {
   const [userdata,setuserdata]=useState([])
@@ -30,6 +31,7 @@ const Router = () => {
           <Route path="/home" element={<><Home userdata={userdata}/></>}/>
           <Route path="/home/chat" element={<><Home userdata={userdata} /><ChatList userdata={userdata}/></>}/>
           <Route path="/home/search" element={<><Home userdata={userdata} /><AddFriend userdata={userdata}/></>}/>
+          <Route path="/home/requests" element={<><Home userdata={userdata} /><ViewRequests userdata={userdata}/></>}/>
         </Routes>
       </BrowserRouter>
     </div>

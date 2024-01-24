@@ -1,8 +1,9 @@
 const FriendRequest = require("../mongoose/models/FriendRequestSchema");
 
 const SendFriendRequest = async (req, res) => {
+  const { sender_Id, reciever_Id ,date} = req.body;
   try {
-    const { sender_Id, reciever_Id } = req.body;
+    
 
     if (!sender_Id || !reciever_Id) {
       return res
@@ -10,12 +11,24 @@ const SendFriendRequest = async (req, res) => {
         .json({ message: "SenderID and RecieverID are required" });
     }
 
-    const newRequest = await FriendRequest.create({
-      sender_Id,
-      reciever_Id,
+    const alreadyconnected = await FriendRequest.findOne({
+      sender_Id: sender_Id,
+      reciever_Id: reciever_Id,
     });
+    console.log("already   :", alreadyconnected);
+    if (!alreadyconnected) {
+      const newRequest = await FriendRequest.create({
+        sender_Id,
+        reciever_Id,
+        date
+      });
 
-    res.status(201).json(newRequest);
+      res.status(201).json(newRequest);
+    } else {
+      return res
+        .status(400)
+        .json({ message: "already sended" });
+    }
   } catch (error) {
     console.error(`Error sending friend request: ${error}`);
     res.status(500).json({ message: "Internal Server Error" });

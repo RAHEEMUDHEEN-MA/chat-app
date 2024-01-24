@@ -8,7 +8,10 @@ const UserSchema = mongoose.Schema({
   profile_photo: { type: String,default:"" },
   mobile: { type: String, unique: true },
   password: { type: String, required: true },
-  connections: { type: Array, default: [] }
+  connections: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }]
 });
 
 const User = mongoose.model("Users", UserSchema);

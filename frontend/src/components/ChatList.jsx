@@ -15,7 +15,8 @@ const ChatList = ({ userdata }) => {
           `http://localhost:7070/chatapp/chatlist/${_id}`
         );
         setconnection(response.data.friendlist);
-        console.log("friends : ",connections)
+        // console.log("friends : ",connections)
+        console.log("response : ",response)
       } catch (error) {}
     };
     loadlist();
@@ -27,11 +28,11 @@ const ChatList = ({ userdata }) => {
       <h2>Chat App</h2>
     </div>
     <div className="chat_list_container">
-      {connections.map((contents) => (
+      {/* {connections.map((contents) => (
         <div key={contents}>
           <p>{contents}</p>
         </div>
-      ))}
+      ))} */}
     </div>
   </div>
   );

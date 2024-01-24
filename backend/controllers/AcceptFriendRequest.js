@@ -6,7 +6,7 @@ const AcceptFriendRequest = async (req, res) => {
   try {
     const alreadyaccepted=await FriendRequest.findOne({_id:rid})
     if (alreadyaccepted.status==="accepted") {
-        return res.send('not a pending request')
+        return res.send('not a pending request !!!!')
         
     }
     const acceptedRequest = await FriendRequest.findByIdAndUpdate(
