@@ -24,7 +24,7 @@ const FriendsProfile = ({data}) => {
     } catch (error) {
       console.log(error)
     }
-      navigate(-1)
+      navigate("/home")
   };
 
   // Additional logging to check if the component renders
@@ -38,10 +38,11 @@ const FriendsProfile = ({data}) => {
         </h1>
       </div>
       <div><h3>{friendMeta.name}</h3></div>
+      <h4>{friendMeta.connections.length}</h4>
       <div className="user_profile_meta">
         <span>
           <span>Phone </span>
-          <p>{friendMeta.mobile}</p>
+          <p>{friendMeta.mobile} <span>friends</span></p>
         </span>
         <span>
           <span>Email</span>
