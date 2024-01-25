@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../assets/styles/Chat.css";
-import { Button, FormControl, FormGroup, NavLink } from "react-bootstrap";
+import { Button, FormControl, FormGroup, Modal, NavLink } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import FriendsProfile from "./FriendsProfile";
@@ -11,7 +11,16 @@ const Chat = () => {
   const [friendMeta, setFriendMeta] = useState({});
   const [message, setMessage] = useState("");
   console.log(message);
-  const [profilestate, setprofilestate] = useState(false);
+
+
+  // --------------------------------------------
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
+  // ---------------------------------------------
 
   useEffect(() => {
     const fetchFriend = async () => {
@@ -35,33 +44,51 @@ const Chat = () => {
   }, [friendMeta]);
 
   return (
-    <div>
-      <div className="chat">
-        <div className="d-flex align-items-center gap-5 p-4 px-5 bg-primary-subtle">
-          <div className="bg-white rounded-5 px-4 py-2 text-success">
-            <h2>{friendMeta?.name ? friendMeta.name.charAt(0) : "U"}</h2>
-          </div>
-          <h5 className="text-white mx-5 text">
-            {friendMeta ? friendMeta.name : "user"}
-          </h5>
+    <div className="chat">
+      <div className="d-flex align-items-center gap-5 p-3 px-5 bg-primary-subtle">
+        <div  >
+          <button className="friend_dp" onClick={handleShow}>{friendMeta?.name ? friendMeta.name.charAt(0) : "U"}</button>
         </div>
-
-        <div className="chat_body"></div>
-        <div className="d-flex justify-content-center ">
-          <FormGroup className="d-flex gap-3 m-4 w-100">
-            <FormControl
-              onChange={(e) => {
-                setMessage(e.target.value);
-              }}
-              placeholder="type your message"
-              className="w-75 xl"
-            ></FormControl>
-            <Button>Send</Button>
-          </FormGroup>
-        </div>
+        <h5 className="text-white mx-5 text">
+          {friendMeta ? friendMeta.name : "user"}
+        </h5>
       </div>
 
-      <FriendsProfile/>
+      <div className="chat_body"></div>
+      <div className="d-flex justify-content-center ">
+        <FormGroup className="d-flex gap-3 m-4 w-100">
+          <FormControl
+            onChange={(e) => {
+              setMessage(e.target.value);
+            }}
+            placeholder="type your message"
+            className="w-75 xl"
+          ></FormControl>
+          <Button>Send</Button>
+        </FormGroup>
+      </div>
+
+      {/* --------------------------------------------- */}
+
+      <Modal  show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Profile</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+              <FriendsProfile friendMeta={friendMeta}/>
+
+        </Modal.Body>
+        {/* <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer> */}
+      </Modal>
+
+      {/* ------------------------------------------------------- */}
     </div>
   );
 };

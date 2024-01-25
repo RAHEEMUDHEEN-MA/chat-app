@@ -39,7 +39,7 @@ const ChatList = ({ userdata }) => {
           >
             <div className="d-flex flex-column gap1 p-1">
               <div className=" border-bottom m-1 p-3 d-flex gap-5 rounded-2">
-                <h1 className="px-3 text-light  bg-danger focus-ring-dark rounded-5">
+                <h1 style={{textDecoration:"none"}} className="px-3 text-light  bg-danger focus-ring-dark rounded-5">
                   {friend.name.charAt(0)}
                 </h1>
                 <p>{friend.name}</p>
