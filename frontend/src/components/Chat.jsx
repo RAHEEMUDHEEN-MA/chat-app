@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "../assets/styles/Chat.css";
-import { Button, FormControl, FormGroup, Modal, NavLink } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Button, FormControl, FormGroup, Modal, } from "react-bootstrap";
+import {  useParams } from "react-router-dom";
 import axios from "axios";
 import FriendsProfile from "./FriendsProfile";
 
-const Chat = () => {
+const Chat = (userdata) => {
+  const userData=userdata.userdata
   const friendID = useParams();
-  console.log("selectedFriendID", friendID);
+
   const [friendMeta, setFriendMeta] = useState({});
   const [message, setMessage] = useState("");
   console.log(message);
+  console.log("UserData At Chat : ",userData)
+  console.log("selectedFriendID", friendID);
+  console.log("selectedFriendMeta",friendMeta);
 
 
   // --------------------------------------------
@@ -40,7 +44,7 @@ const Chat = () => {
   }, [friendID]);
 
   useEffect(() => {
-    console.log(friendMeta);
+    
   }, [friendMeta]);
 
   return (
@@ -75,7 +79,7 @@ const Chat = () => {
           <Modal.Title>Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-              <FriendsProfile friendMeta={friendMeta}/>
+              <FriendsProfile  data={{friendMeta,userData}} />
 
         </Modal.Body>
         {/* <Modal.Footer>

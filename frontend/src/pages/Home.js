@@ -7,6 +7,7 @@ const Home = ({ userdata }) => {
   return (
     <div style={{ display: "flex" }}>
       <SideNavBar  userdata={userData} />
+     
     </div>
   );
 };

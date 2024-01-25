@@ -3,8 +3,8 @@ const User = require("../../mongoose/models/UserSchema");
 
 const clearDB = async (req, res) => {
   try {
-    await User.deleteMany({});
-    await FriendRequest.deleteMany({});
+    // await User.deleteMany({});
+    // await FriendRequest.deleteMany({});
 
     res.status(200).json({ message: "All data cleared successfully" });
   } catch (error) {

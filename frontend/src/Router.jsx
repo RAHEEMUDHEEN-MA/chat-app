@@ -8,7 +8,7 @@ import ChatList from "./components/ChatList";
 import Chat from "./components/Chat";
 import AddFriend from "./components/AddFriend";
 import ViewRequests from "./components/ViewRequests";
-import FriendsProfile from "./components/FriendsProfile";
+// import FriendsProfile from "./components/FriendsProfile";
 
 const Router = () => {
   const [userdata,setuserdata]=useState([])
@@ -16,6 +16,7 @@ const Router = () => {
   const setUserDataHandler = (data) => {
     setuserdata(data);
   };
+  console.log("At Router :",userdata)
   return (
     <div style={{display:"flex"}}>
       {/* <div style={{display:"flex"}}>
@@ -32,7 +33,7 @@ const Router = () => {
           <Route path="/home" element={<><Home userdata={userdata}/><ChatList userdata={userdata}/></>}/>
           <Route path="/home/chat" element={<><Home userdata={userdata} /><ChatList  userdata={userdata}/></>}/>
           <Route path="/home/chat" element={<><Home userdata={userdata} /><ChatList  userdata={userdata}/></>}/>
-          <Route path="/home/chat/:id" element={<><Home userdata={userdata} /><ChatList  userdata={userdata} /><Chat/></>}/>
+          <Route path="/home/chat/:id" element={<><Home userdata={userdata} /><ChatList  userdata={userdata} /><Chat userdata={userdata} /></>}/>
           <Route path="/home/search" element={<><Home userdata={userdata} /><AddFriend userdata={userdata}/></>}/>
           <Route path="/home/requests" element={<><Home userdata={userdata} /><ViewRequests userdata={userdata}/></>}/>
         </Routes>

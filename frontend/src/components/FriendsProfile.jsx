@@ -1,33 +1,61 @@
 import React from "react";
-import "../assets/styles/FriendsProfile.css";
 import { Button } from "react-bootstrap";
+import "../assets/styles/FriendsProfile.css";
+import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const FriendsProfile = (friendMeta) => {
+const FriendsProfile = ({data}) => {
+  const { friendMeta, userData } = data;
+  const navigate=useNavigate()
  
-  console.log("profile of :",friendMeta.friendMeta.name)
-  return (
-   
-      <div className="profile_container">
-        <div className="profil_dp d-flex justify-content-center m-3">
-          <h1 className="bg-primary text-white py-3 px-4  d-flex rounded-5" >{friendMeta.friendMeta.name.charAt(0)}</h1>
-        </div>
-        <div>
-          <h3>{friendMeta.friendMeta.name}</h3>
-        </div>
-        <div className="user_profile_meta">
-          <span>
-            <span>Phone </span>
-            <p>{friendMeta.friendMeta.mobile}</p>
-          </span>
-          <span>
-            <span>email</span>
-            <p>{friendMeta.friendMeta.email}</p>
-          </span>
-        </div>
+  console.log("User At profile", userData);
+  console.log("friend At profile", friendMeta);
 
-        <div><Button variant="danger">Unfriend</Button></div>
+  const handleclick = async () => {
+    console.log("Unfriend clicked");
+
+    try {
+      const response=await axios.put("http://localhost:7070/chatapp/unfriend",{
+        requestingId: userData._id,
+        targetId: friendMeta._id
+       
+    })
+    console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+      navigate(-1)
+  };
+
+  // Additional logging to check if the component renders
+  // console.log("Rendering FriendsProfile component");
+
+  return (
+    <div className="profile_container">
+      <div className="profil_dp d-flex justify-content-center m-3">
+        <h1 className="bg-primary text-white py-3 px-4 d-flex rounded-5">
+          {friendMeta.name.charAt(0)}
+        </h1>
       </div>
-   
+      <div><h3>{friendMeta.name}</h3></div>
+      <div className="user_profile_meta">
+        <span>
+          <span>Phone </span>
+          <p>{friendMeta.mobile}</p>
+        </span>
+        <span>
+          <span>Email</span>
+          <p>{friendMeta.email}</p>
+        </span>
+      </div>
+
+      <div>
+        {/* Additional logging to check if the Button renders */}
+        <Button onClick={handleclick} variant="danger">
+          Unfriend
+        </Button>
+      </div>
+    </div>
   );
 };
 
