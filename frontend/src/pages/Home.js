@@ -1,26 +1,12 @@
-import React from 'react';
-import SideNavBar from '../components/SideNavBar';
-import ChatList from '../components/ChatList';
-import Chat from '../components/Chat';
-import { BrowserRouter, Route, Router } from 'react-router-dom';
+import React from "react";
+import SideNavBar from "../components/SideNavBar";
 
 const Home = ({ userdata }) => {
-  var userData=userdata
-  // const Connections=["connections",userData.connections]
-  // console.log(Connections)
- 
+  var userData = userdata;
 
   return (
-    <div style={{display:"flex"}}>
-      <SideNavBar userdata={userData} />
-
-      
-        {/* <Route path="/home/chat" element={<><ChatList/></>}/> */}
-       
-     
-
-      
-      
+    <div style={{ display: "flex" }}>
+      <SideNavBar  userdata={userData} />
     </div>
   );
 };

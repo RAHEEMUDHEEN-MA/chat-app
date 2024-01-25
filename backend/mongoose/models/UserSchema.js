@@ -11,9 +11,9 @@ const UserSchema = mongoose.Schema({
   connections: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  }]
+  }]  
 });
 
-const User = mongoose.model("Users", UserSchema);
+const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
