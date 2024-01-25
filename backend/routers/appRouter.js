@@ -13,13 +13,14 @@ const clearDB = require('../controllers/danger/clearDB')
 const RejectFriendRequest = require('../controllers/RejectFriendRequest')
 const FindUserById = require('../controllers/FindUserByID')
 const UnFriend = require('../controllers/UnFriend')
+const SendMessage = require('../controllers/SendMessage')
 
 const appRouter=express.Router()
 
 appRouter.route('/test').post(test)
 appRouter.route('/ok').get(tester) 
 
-// appRouter.route('/cleardb').delete(clearDB)
+appRouter.route('/cleardb').delete(clearDB)
 
 appRouter.route('/signup').post(SignUp)
 appRouter.route('/login').post(Login) 
@@ -31,6 +32,7 @@ appRouter.route('/:id/viewfriendrequest').get(ViewFriendRequest)
 appRouter.route('/:rid/acceptrequest').put(AcceptFriendRequest)
 appRouter.route('/:rid/rejectrequest').put(RejectFriendRequest)
 appRouter.route('/unfriend').put(UnFriend)
+appRouter.route('/sendmessage').post(SendMessage)
 
 
 

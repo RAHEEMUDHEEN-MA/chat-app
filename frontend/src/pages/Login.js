@@ -3,13 +3,19 @@ import { Form, Button } from "react-bootstrap";
 import "../assets/styles/Login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const Login = ({setuserdata}) => {
+const Login = ({ setuserdata }) => {
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
   const [mobileError, setMobileError] = useState("");
   const [authfailed, setAuthfailed] = useState("");
 
-  const navigate=useNavigate()
+ let date=new Date()
+date=date.toUTCString()
+ console.log("currentTimeAndDate",date)
+  
+  
+
+  const navigate = useNavigate();
 
   const LogIn = async () => {
     if (mobile.length === 10 && password !== "") {
@@ -26,12 +32,10 @@ const Login = ({setuserdata}) => {
 
         console.log(response.data.userdata);
         // alert(response.data.message);
-        setuserdata(response.data.userdata)
+        setuserdata(response.data.userdata);
         setAuthfailed("");
         setMobileError("");
-        navigate('/home');
-        
-
+        navigate("/home");
       } catch (error) {
         console.error("AxiosError:", error.response);
         if (error.response.status == 401) {
@@ -61,7 +65,9 @@ const Login = ({setuserdata}) => {
                 setMobile(e.target.value);
                 setMobileError("");
               }}
-              onKeyPress={(e)=>{e.key =="Enter" && LogIn()}}
+              onKeyPress={(e) => {
+                e.key == "Enter" && LogIn();
+              }}
             />
             <span className="error_message">{mobileError}</span>
           </Form.Group>
@@ -74,7 +80,9 @@ const Login = ({setuserdata}) => {
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
-              onKeyPress={(e)=>{e.key =="Enter" && LogIn()}}
+              onKeyPress={(e) => {
+                e.key == "Enter" && LogIn();
+              }}
             />
           </Form.Group>
 
