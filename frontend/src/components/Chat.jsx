@@ -4,16 +4,19 @@ import { Button, FormControl, FormGroup, Modal, } from "react-bootstrap";
 import {  useParams } from "react-router-dom";
 import axios from "axios";
 import FriendsProfile from "./FriendsProfile";
+import io from "socket.io-client"
+const socket=io('http://localhost:7070')
 
 const Chat = (userdata) => {
   const userData=userdata.userdata
   const friendID = useParams();
 
   const [friendMeta, setFriendMeta] = useState({});
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState();
+  // const message1="test ok"
   console.log(message);
   console.log("UserData At Chat : ",userData)
-  console.log("selectedFriendID", friendID);
+  console.log("selectedFriendID", friendID.id);
   console.log("selectedFriendMeta",friendMeta);
 
 
@@ -43,9 +46,28 @@ const Chat = (userdata) => {
     fetchFriend();
   }, [friendID]);
 
-  useEffect(() => {
+ 
+
+
+ const sendMessage = async ()=>{
+  if(message !==""||!userData||!friendID){
+      const messageData={
+        sender_id:userData._id,
+        receiver_id:friendID.id,
+        content:message
     
-  }, [friendMeta]);
+      }
+      await socket.emit("send_message",messageData)
+      setMessage("")
+  }
+ 
+
+  socket.emit("socketTest",{
+   
+   
+
+  })
+ }
 
   return (
     <div className="chat">
@@ -62,13 +84,14 @@ const Chat = (userdata) => {
       <div className="d-flex justify-content-center ">
         <FormGroup className="d-flex gap-3 m-4 w-100">
           <FormControl
+          value={message}
             onChange={(e) => {
               setMessage(e.target.value);
             }}
             placeholder="type your message"
             className="w-75 xl"
           ></FormControl>
-          <Button>Send</Button>
+          <Button disabled={!message}  onClick={sendMessage}>Send</Button>
         </FormGroup>
       </div>
 
