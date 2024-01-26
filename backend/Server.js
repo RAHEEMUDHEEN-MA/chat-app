@@ -8,11 +8,12 @@ const { Server } = require("socket.io");
 const bodyParser = require("body-parser");
 const appRouter = require("./routers/appRouter");
 const Chat = require("./mongoose/models/ChatSchema");
+const SendMessage = require("./controllers/SendMessage");
 
 app.use(cors());
 Connection();
 app.use(express.json());
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use("/chatapp", appRouter);
 
 const server = http.createServer(app);
@@ -26,37 +27,57 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log(`user with socket ID ${socket.id} is logged in`);
 
+  // ----------------------------socket testing function
 
+  socket.on("socketTest", (data) => {
+    console.log(data);
+  });http://localhost:3000/home/chat/65b2121512b52d856a77a0f7
 
-  socket.on("send_message", async (data) => {
-    try {
-      const { sender_id, receiver_id, content } = data;
-    //   console.log(sender_id,receiver_id)
+  // ----------------------------load Chat History
 
+socket.on("loadChatHistory",async ({sender_id,receiver_id})=>{
+  console.log("loadhistory server: ",sender_id,receiver_id.id)
+  try {
+
+    const chatHistory=await Chat.find({
+     $or:[
+      { sender_id: receiver_id.id, receiver_id: sender_id },
+      { sender_id: sender_id, receiver_id: receiver_id.id },
+     ]
+    }).sort("time")
+    console.log("historryy: ",chatHistory)
+
+    socket.emit("receiveChatHistory", chatHistory);
+  } catch (error) {
     
-     if(sender_id&&receiver_id){
+  }
+})
+
+ 
+  // ------------------------------------------
+  socket.on("send_message", async (data) => {
+    // console.log("at server socket", data);
+    const { sender_id, receiver_id, content } = data;
+    try {
+     
+
+      if (sender_id && receiver_id) {
         const message = await Chat.create({
-            sender_id,
-            receiver_id,
-            content,
-          });
-
-          console.log("sended message :",message) 
-     }
-     else{
-        console.log("login cheyyada nayee!")
-
-     }
-
-      
+          sender_id,
+          receiver_id,
+          content,
+        });
+        io.to(receiver_id).emit("receive_message", message);
+        console.log(" message sended");
+      } else {
+        console.log("Do login ! ");
+      }
     } catch (error) {
       console.error(`Failed to send message: ${error}`);
     }
   });
 
-socket.on("socketTest",(data)=>{
-    console.log(data)
-})
+  // ------------------------------------
 
   socket.on("disconnect", () => {
     console.log(`user with socket ID ${socket.id} is logged out`);
