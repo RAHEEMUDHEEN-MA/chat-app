@@ -2,12 +2,28 @@ import React, { useEffect, useState } from "react";
 import "../assets/styles/ChatList.css";
 import axios from "axios";
 import { Link,  } from "react-router-dom";
+// import io from "socket.io-client";
 
 const ChatList = ({ userdata }) => {
   const [Friends, setFriends] = useState([]);
-  const testobj={data:"test"}
+  // const [socket,setSocket]=useState()
+  // const testobj={data:"test"}
 
   const _id = userdata._id;
+
+
+  // useEffect(() => {
+  //   const newsocket = io("http://localhost:7070");
+  //   setSocket(newsocket)
+
+  //   // Cleanup function
+  //   return () => {
+  //     console.log("Disconnecting socket...");
+  //     newsocket.disconnect();
+  //   };
+  // }, []);
+  
+  // console.log(socket)
 
   useEffect(() => {
     const loadlist = async () => {
@@ -35,7 +51,7 @@ const ChatList = ({ userdata }) => {
           <Link
             key={friend._id}
             
-            to={{ pathname: `/home/chat/${friend._id}`, state: { testobj } }}
+            to={{ pathname: `/home/chat/${friend._id}` }}
           >
             <div className="d-flex flex-column gap1 p-1">
               <div className=" border-bottom m-1 p-3 d-flex gap-5 rounded-2">

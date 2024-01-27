@@ -84,5 +84,5 @@ socket.on("loadChatHistory",async ({sender_id,receiver_id})=>{
   });
 });
 
-const port = 7070;
-server.listen(port, console.log(`server is running on port : ${port}`));
+// const port = 7070;
+// server.listen(port, console.log(`server is running on port : ${port}`));
