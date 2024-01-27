@@ -1,5 +1,5 @@
-const FriendRequest = require("../mongoose/models/FriendRequestSchema");
-const User = require("../mongoose/models/UserSchema");
+const FriendRequest = require("../models/FriendRequestSchema");
+const User = require("../models/UserSchema");
 
 const UnFriend = async (req, res) => {
   const { requestingId, targetId } = req.body;

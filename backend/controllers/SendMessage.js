@@ -25,7 +25,7 @@
 // module.exports = SendMessage;
 
 
-const Chat = require("../mongoose/models/ChatSchema");
+const Chat = require("../models/ChatSchema");
 const moment = require("moment-timezone");
 
 const SendMessage = async (req, res,data={}) => {

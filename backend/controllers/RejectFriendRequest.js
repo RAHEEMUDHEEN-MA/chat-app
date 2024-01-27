@@ -1,4 +1,4 @@
-const FriendRequest = require("../mongoose/models/FriendRequestSchema");
+const FriendRequest = require("../models/FriendRequestSchema");
 
 const RejectFriendRequest = async (req, res) => {
   const rid = req.params.rid;

@@ -1,4 +1,4 @@
-const User = require("../mongoose/models/UserSchema");
+const User = require("../models/UserSchema");
 
 const FindUserById= async(req,res)=>{
     const id=req.params.id

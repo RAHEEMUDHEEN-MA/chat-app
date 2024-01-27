@@ -1,4 +1,4 @@
-const FriendRequest = require("../mongoose/models/FriendRequestSchema");
+const FriendRequest = require("../models/FriendRequestSchema");
 
 const SendFriendRequest = async (req, res) => {
   const { sender_Id, reciever_Id ,date} = req.body;

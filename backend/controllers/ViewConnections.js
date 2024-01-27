@@ -1,4 +1,4 @@
-const User = require("../mongoose/models/UserSchema");
+const User = require("../models/UserSchema");
 
 const ViewConnections = async (req, res) => {
   const _id = req.params.id;

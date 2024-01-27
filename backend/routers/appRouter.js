@@ -14,6 +14,7 @@ const RejectFriendRequest = require('../controllers/RejectFriendRequest')
 const FindUserById = require('../controllers/FindUserByID')
 const UnFriend = require('../controllers/UnFriend')
 const SendMessage = require('../controllers/SendMessage')
+const LoadChatHistory = require('../controllers/LoadchatHistory.js')
 
 const appRouter=express.Router()
 
@@ -33,6 +34,7 @@ appRouter.route('/:rid/acceptrequest').put(AcceptFriendRequest)
 appRouter.route('/:rid/rejectrequest').put(RejectFriendRequest)
 appRouter.route('/unfriend').put(UnFriend)
 appRouter.route('/sendmessage').post(SendMessage)
+appRouter.route('/chathistory').get(LoadChatHistory)
 
 
 

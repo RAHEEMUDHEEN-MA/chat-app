@@ -14,7 +14,7 @@ const Chat2 = ({ userdata, socket }) => {
 
   const [friendMeta, setFriendMeta] = useState({});
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [messageList, setMessageList] = useState([]);
 
   console.log("typing : ", message);
 
@@ -33,8 +33,6 @@ const Chat2 = ({ userdata, socket }) => {
         const response = await axios.get(
           `http://localhost:7070/chatapp/find/${friendID.id}`
         );
-        // console.log("api called!!!",response);  //working
-
         setFriendMeta(response.data);
       } catch (error) {
         console.log(error);
@@ -42,6 +40,21 @@ const Chat2 = ({ userdata, socket }) => {
     };
 
     fetchFriend();
+
+    const fetchChatHistory = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:7070/chatapp/chathistory",
+          {
+            sender_id: "65b0b0b29046aea7e722c9f5",
+            receiver_id: "65b2121512b52d856a77a0f7"
+          }
+        );
+        console.log("history from dataBase",response.data)
+
+      } catch (error) {}
+    };
+    fetchChatHistory()
   }, [friendID]);
 
   //sending message---------------------------------------------
@@ -50,39 +63,39 @@ const Chat2 = ({ userdata, socket }) => {
     if (message !== "" || !userdata || !friendID) {
       const messageData = {
         sender_id: userdata._id,
-        receiver_id: friendID.id,
+        sender_name: userdata.name,
         content: message,
-        date: new Date(Date.now()),
+        receiver_id: friendID.id,
+
+        date: new Date(Date.now()).toISOString(),
       };
       await socket.emit("sendChatMessage", messageData);
-      setMessages((prevMessages) => [...prevMessages, messageData]);
-      
+      setMessageList((prevMessages) => [...prevMessages, messageData]);
+
       setMessage("");
     }
     return () => {
       // Cleanup the event listener when the component is unmounted
-      socket.off("sendChatMessage", );
-      
+      socket.off("sendChatMessage");
     };
   };
 
   // recieving message------------------------------------------
 
   useEffect(() => {
-    socket.on("recieveChatMessage", (message) => {
-     
+    socket.off("recieveChatMessage").on("recieveChatMessage", (message) => {
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!56");
       if (message.receiver_id === userdata._id) {
-        setMessages((prevMessages) => [...prevMessages, message]);
+        setMessageList((prevMessages) => [...prevMessages, message]);
       }
     });
-    
-  }, [friendID]);
+  }, [message]);
 
   useEffect(() => {
-    setMessages([]);
+    setMessageList([]);
   }, [friendID]);
 
-  console.log("chat history : ", messages);
+  console.log("chat history : ", messageList);
 
   return (
     <div className="chat">
@@ -99,9 +112,11 @@ const Chat2 = ({ userdata, socket }) => {
 
       <div className="chat_body bg-gray h-50">
         <div className="p-3">
-          {messages.map((chat) => (
+          {messageList.map((chat) => (
             <div className="m-1  bg-danger-subtle">
               <p>{chat.content}</p>
+              <p>{chat.sender_name}</p>
+              <p>{chat.date}</p>
             </div>
           ))}
         </div>

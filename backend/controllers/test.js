@@ -1,4 +1,4 @@
-const testmodel = require("../mongoose/models/testSchema");
+const testmodel = require("../models/testSchema");
 
 const test = async (req, res) => {
   const { name, age } = req.body;

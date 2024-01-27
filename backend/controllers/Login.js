@@ -1,4 +1,4 @@
-const User = require("../mongoose/models/UserSchema");
+const User = require("../models/UserSchema");
 const bcrypt = require("bcrypt");
 
 const Login = async (req, res) => {

@@ -1,4 +1,4 @@
-const User = require("../mongoose/models/UserSchema");
+const User = require("../models/UserSchema");
 
 const FindUser = async (req, res) => {
   const mobile=req.params.mobile

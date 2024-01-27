@@ -1,12 +1,12 @@
-const Chat = require("../../mongoose/models/ChatSchema");
-const FriendRequest = require("../../mongoose/models/FriendRequestSchema");
-const User = require("../../mongoose/models/UserSchema");
+const Chat = require("../../models/ChatSchema");
+const FriendRequest = require("../../models/FriendRequestSchema");
+const User = require("../../models/UserSchema");
 
 const clearDB = async (req, res) => {
   try {
     // await User.deleteMany({});
     // await FriendRequest.deleteMany({});
-    await Chat.deleteMany({});
+    // await Chat.deleteMany({});
 
     res.status(200).json({ message: "All data cleared successfully" });
   } catch (error) {
