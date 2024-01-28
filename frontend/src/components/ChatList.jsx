@@ -42,10 +42,13 @@ const ChatList = ({ userdata }) => {
 
   return (
     <div className="chat_list">
-      <div className="chat_list_head">
+      <div className="chat_list_head d-flex justify-content-around">
         <h2>Chats</h2>
+        <Link to="/home/randomchat">room</Link>
+        
       </div>
       <div className="chat_list_container" style={{}}>
+
         {Friends.map((friend) => (
           
           <Link

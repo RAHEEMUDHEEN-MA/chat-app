@@ -18,7 +18,7 @@ const Login = ({ setuserdata }) => {
   const navigate = useNavigate();
 
   const LogIn = async () => {
-    if (mobile.length === 10 && password !== "") {
+    if (mobile.length === 10 && password !==+"") {
       console.log("Submitted", mobile, password);
 
       try {
@@ -38,10 +38,10 @@ const Login = ({ setuserdata }) => {
         navigate("/home");
       } catch (error) {
         console.error("AxiosError:", error.response);
-        if (error.response.status == 401) {
+        if (error.response.status === 401) {
           setAuthfailed(error.response.data.message);
         } else {
-          if (error.response.status == 404) {
+          if (error.response.status === 404) {
             setAuthfailed(error.response.data.message);
           }
         }
@@ -66,7 +66,7 @@ const Login = ({ setuserdata }) => {
                 setMobileError("");
               }}
               onKeyPress={(e) => {
-                e.key == "Enter" && LogIn();
+                e.key === "Enter" && LogIn();
               }}
             />
             <span className="error_message">{mobileError}</span>
@@ -81,7 +81,7 @@ const Login = ({ setuserdata }) => {
                 setPassword(e.target.value);
               }}
               onKeyPress={(e) => {
-                e.key == "Enter" && LogIn();
+                e.key === "Enter" && LogIn();
               }}
             />
           </Form.Group>

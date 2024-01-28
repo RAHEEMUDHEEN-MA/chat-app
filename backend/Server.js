@@ -12,8 +12,8 @@ app.use("/chatapp", appRouter);
 
 const server = http.createServer(app);
 
-const initializeSocketIO = require("./socket/chatSocket");
-initializeSocketIO(server);
+const SocketIO = require("./socket/chatSocket");
+SocketIO(server);
 
 const port = 7070;
 server.listen(port, console.log(`server is running on port : ${port}`));

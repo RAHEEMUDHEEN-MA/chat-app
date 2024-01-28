@@ -11,11 +11,13 @@ import ViewRequests from "./components/ViewRequests";
 import Chat2 from "./components/Chat2";
 // import FriendsProfile from "./components/FriendsProfile";
 import io from "socket.io-client";
+import JoinRandomChat from "./components/JoinRandomChat";
+import RandomChat from "./components/RandomChat";
 
 const Router = () => {
   const [userdata, setuserdata] = useState([]);
   const [socket,setSocket]=useState()
-  console.log("At Router 111111:", userdata);
+
 
   const setUserDataHandler = (data) => {
     setuserdata(data);
@@ -28,7 +30,7 @@ const Router = () => {
     const newsocket = io("http://localhost:7070");
     setSocket(newsocket)
 
-    // Cleanup function
+ 
     return () => {
       console.log("Disconnecting socket...");
       newsocket.disconnect();
@@ -42,6 +44,8 @@ const Router = () => {
         <Chat/>
       </div> */}
       {/* <FriendsProfile/> */}
+
+      {/* <RandomChat/> */}
       <BrowserRouter>
         <Routes>
           <Route
@@ -86,15 +90,7 @@ const Router = () => {
               </>
             }
           />
-          {/* <Route
-            path="/home/chat"
-            element={
-              <>
-                <Home userdata={userdata} />
-                <ChatList userdata={userdata} />
-              </>
-            }
-          /> */}
+     
           <Route
             path="/home/chat/:id"
             element={
@@ -120,6 +116,16 @@ const Router = () => {
               <>
                 <Home userdata={userdata} />
                 <ViewRequests userdata={userdata} />
+              </>
+            }
+          />
+
+          <Route
+            path="/home/randomchat"
+            element={
+              <>
+                <Home userdata={userdata} />
+                <JoinRandomChat userdata={userdata} socket={socket}/>
               </>
             }
           />

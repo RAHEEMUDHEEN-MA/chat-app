@@ -6,8 +6,6 @@ import { useParams } from "react-router-dom";
 import FriendsProfile from "./FriendsProfile";
 
 const Chat2 = ({ userdata, socket }) => {
-  // console.log("userdata at selected chat :: ",userdata) //working
-  //  console.log("socket at chat : ",socket) //working
   const userData = userdata.userdata;
 
   const friendID = useParams();
@@ -38,33 +36,22 @@ const Chat2 = ({ userdata, socket }) => {
         console.log(error);
       }
     };
-
     fetchFriend();
-
-
-
 
     const fetchChatHistory = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:7070/chatapp/chathistory",{
+          "http://localhost:7070/chatapp/chathistory",
+          {
             sender_id: userdata._id,
-            receiver_id: friendID.id
+            receiver_id: friendID.id,
           }
-        
         );
-        setMessageList(response.data)
-        // console.log("history from dataBase", response.data);
+        setMessageList(response.data);
       } catch (error) {}
     };
     fetchChatHistory();
-
-
-
   }, [friendID]);
-
-  
-
 
   //sending message---------------------------------------------
 
@@ -138,7 +125,7 @@ const Chat2 = ({ userdata, socket }) => {
               setMessage(e.target.value);
             }}
             onKeyPress={(e) => {
-              e.key == "Enter" && sendMessage();
+              e.key === "Enter" && sendMessage();
             }}
             placeholder="type your message"
             className="w-75 xl"
