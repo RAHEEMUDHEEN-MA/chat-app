@@ -9,9 +9,9 @@ const Login = ({ setuserdata }) => {
   const [mobileError, setMobileError] = useState("");
   const [authfailed, setAuthfailed] = useState("");
 
- let date=new Date()
-date=date.toUTCString()
- console.log("currentTimeAndDate",date)
+//  let date=new Date()
+// date=date.toUTCString()
+//  console.log("currentTimeAndDate",date)
   
   
 

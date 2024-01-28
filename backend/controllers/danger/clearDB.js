@@ -6,7 +6,7 @@ const clearDB = async (req, res) => {
   try {
     // await User.deleteMany({});
     // await FriendRequest.deleteMany({});
-    // await Chat.deleteMany({});
+    await Chat.deleteMany({});
 
     res.status(200).json({ message: "All data cleared successfully" });
   } catch (error) {

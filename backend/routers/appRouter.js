@@ -20,7 +20,7 @@ const appRouter=express.Router()
 
 appRouter.route('/test').post(test)
 appRouter.route('/ok').get(tester) 
-
+  
 appRouter.route('/cleardb').delete(clearDB)
 
 appRouter.route('/signup').post(SignUp)
@@ -34,7 +34,7 @@ appRouter.route('/:rid/acceptrequest').put(AcceptFriendRequest)
 appRouter.route('/:rid/rejectrequest').put(RejectFriendRequest)
 appRouter.route('/unfriend').put(UnFriend)
 appRouter.route('/sendmessage').post(SendMessage)
-appRouter.route('/chathistory').get(LoadChatHistory)
+appRouter.route('/chathistory').post(LoadChatHistory)
 
 
 

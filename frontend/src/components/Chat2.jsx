@@ -41,21 +41,30 @@ const Chat2 = ({ userdata, socket }) => {
 
     fetchFriend();
 
+
+
+
     const fetchChatHistory = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:7070/chatapp/chathistory",
-          {
-            sender_id: "65b0b0b29046aea7e722c9f5",
-            receiver_id: "65b2121512b52d856a77a0f7"
+        const response = await axios.post(
+          "http://localhost:7070/chatapp/chathistory",{
+            sender_id: userdata._id,
+            receiver_id: friendID.id
           }
+        
         );
-        console.log("history from dataBase",response.data)
-
+        setMessageList(response.data)
+        // console.log("history from dataBase", response.data);
       } catch (error) {}
     };
-    fetchChatHistory()
+    fetchChatHistory();
+
+
+
   }, [friendID]);
+
+  
+
 
   //sending message---------------------------------------------
 
@@ -63,9 +72,9 @@ const Chat2 = ({ userdata, socket }) => {
     if (message !== "" || !userdata || !friendID) {
       const messageData = {
         sender_id: userdata._id,
-        sender_name: userdata.name,
-        content: message,
         receiver_id: friendID.id,
+        content: message,
+        sender_name: userdata.name,
 
         date: new Date(Date.now()).toISOString(),
       };
@@ -95,7 +104,7 @@ const Chat2 = ({ userdata, socket }) => {
     setMessageList([]);
   }, [friendID]);
 
-  console.log("chat history : ", messageList);
+  console.log("chat history yess : ", messageList);
 
   return (
     <div className="chat">
