@@ -46,8 +46,8 @@ function RandomChat({ socket, room, name }) {
         <div
           className="chat-header p-3"
           style={{
-            backgroundColor: "gray",
-            color: "white",
+            // backgroundColor: "gray",
+            color: "black",
          
             padding: "5px",
           }}
@@ -106,10 +106,11 @@ function RandomChat({ socket, room, name }) {
             style={{
               boxShadow: "2px 1px 5px gray",
               height: "40px",
-              borderRadius: "50%",
+             
             }}
           >
-            <IoMdSend />
+            {/* <IoMdSend /> */}
+            send
           </Button>
         </div>
       </div>

@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import "../assets/styles/SignUp.css";
-import { Button, Form } from "react-bootstrap";
+import "../assets/styles/Login.css";
+// import signupillustration from "../assets/"
+// const signupillustration = require("./undrawSignupn6im.png");
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -15,8 +18,8 @@ const SignUp = () => {
   const [nonMatchAlert, setNonMatchAlert] = useState("");
   const [notFilled, setNotFilled] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [mobileAlreadyusedAlert,setMobileAlreadyusedAlert]=useState("")
-  const navigate=useNavigate()
+  const [mobileAlreadyusedAlert, setMobileAlreadyusedAlert] = useState("");
+  const navigate = useNavigate();
 
   const handleGenderChange = (value) => {
     setGender(value);
@@ -34,25 +37,27 @@ const SignUp = () => {
         console.log("Submitted", name, email, gender, dob, mobile, password);
         // API call
 
-      try {
-        const response = await axios.post("http://localhost:7070/chatapp/signup", {
-          name,
-          email,
-          dob,
-          gender,
-          mobile,
-          password
-        });
-        console.log(response)
+        try {
+          const response = await axios.post(
+            "http://localhost:7070/chatapp/signup",
+            {
+              name,
+              email,
+              dob,
+              gender,
+              mobile,
+              password,
+            }
+          );
+          console.log(response);
 
-        alert(response.status,"Registration Success")
-        setMobileAlreadyusedAlert("")
-        navigate(-1)
-        
-      } catch (error) {
-        setMobileAlreadyusedAlert(error.response.data.error)
-        console.log(error.response.data.error)
-      }
+          alert(response.status, "Registration Success");
+          setMobileAlreadyusedAlert("");
+          navigate(-1);
+        } catch (error) {
+          setMobileAlreadyusedAlert(error.response.data.error);
+          console.log(error.response.data.error);
+        }
       } else {
         setNotFilled("Please fill in all required fields.");
       }
@@ -61,9 +66,31 @@ const SignUp = () => {
 
   return (
     <div className="login_main">
-      <div className="login_form">
-        <Form onSubmit={handleSignUp}>
-          <Form.Group className="mb-3">
+      <Row className="login_main_conatainer">
+        <Col md={4} className="signupLeftbanner" >
+        <div>
+            <h3>Register with ChatX</h3>
+          </div>
+          <span className="welcome_underline"></span>
+          <div>
+            <p>
+              Note : Mobile Number used for Registration will be required to login
+            </p>
+          </div>
+          <div>
+            <img src="./" alt="" />
+            {/* <Button
+              className="rounded-5 border-2  px-4 py-3"
+              variant="outline-light"
+            >
+              Login
+            </Button> */}
+          </div>
+        </Col>
+        <Col><Form onSubmit={handleSignUp}>
+          
+          <Row className="login_form">
+          <Col><Form.Group className="mb-3">
             <Form.Control
               type="text"
               placeholder="Name"
@@ -80,8 +107,6 @@ const SignUp = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
-
-          
 
           <Form.Group className="mb-3" style={{ width: "100px" }}>
             <Form.Check
@@ -128,63 +153,64 @@ const SignUp = () => {
               required
               onChange={(e) => setDob(e.target.value)}
             />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Control
-              type="text"
-              placeholder="Mobile"
-              pattern="[0-9]{10}"
-              title=" Must contain 10 digits"
-              required
-              onChange={(e) => setMobile(e.target.value)}
-            />
-            <Form.FloatingLabel style={{fontSize:"13px", color:"red"}}>{mobileAlreadyusedAlert}</Form.FloatingLabel>
-          </Form.Group>
-
-          {/* <Form.Group className="" style={{padding:"0px", margin:"5px 0px"}}>
+          </Form.Group></Col>
+          <Col>
+            {" "}
+            <Form.Group className="mb-3">
+              <Form.Control
+                type="text"
+                placeholder="Mobile"
+                pattern="[0-9]{10}"
+                title=" Must contain 10 digits"
+                required
+                onChange={(e) => setMobile(e.target.value)}
+              />
+              <Form.FloatingLabel style={{ fontSize: "13px", color: "red" }}>
+                {mobileAlreadyusedAlert}
+              </Form.FloatingLabel>
+            </Form.Group>
+            {/* <Form.Group className="" style={{padding:"0px", margin:"5px 0px"}}>
             <span style={{ fontSize: "14px", color: "red" }}></span>
           </Form.Group> */}
-
-          <Form.Group className="mb-3">
-            <Form.Control
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=])(?!.*\s).*"
-              title="Password must contain at least one number, one letter, and one special character."
-              required
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <Button
-              variant="link"
-              onClick={() => setShowPassword(!showPassword)}
-              style={{ marginLeft: "5px" }}
-            >
-              {showPassword ? "Hide" : "Show"} Password
+            <Form.Group className="mb-3">
+              <Form.Control
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=])(?!.*\s).*"
+                title="Password must contain at least one number, one letter, and one special character."
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button
+                variant="link"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{ marginLeft: "5px" }}
+              >
+                {showPassword ? "Hide" : "Show"} Password
+              </Button>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Control
+                type="password"
+                placeholder="Confirm Password"
+                required
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <Form.FloatingLabel style={{ fontSize: "13px", color: "orange" }}>
+                {nonMatchAlert}
+              </Form.FloatingLabel>
+            </Form.Group>
+            <Button type="submit" variant="primary">
+              Signup
             </Button>
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Control
-              type="password"
-              placeholder="Confirm Password"
-              required
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-             <Form.FloatingLabel style={{fontSize:"13px", color:"orange"}}>{nonMatchAlert}</Form.FloatingLabel>
-            
-          </Form.Group>
-
-          <Button type="submit" variant="primary">
-            Signup
-          </Button>
-
-          <br />
-          <br />
-
-          <a href="/login">Login</a>
-        </Form>
-      </div>
+            <br />
+            <br />
+            <a href="/">Login</a>
+          </Col>
+          </Row>
+         
+        </Form></Col>
+      </Row>
     </div>
   );
 };

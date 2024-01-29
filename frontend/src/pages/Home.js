@@ -2,14 +2,21 @@ import React, { useEffect, useState } from "react";
 
 import SideNavBar from "../components/SideNavBar";
 
-const Home = ({ userdata }) => {
+const Home = ({ userdata,socket }) => {
   var userData = userdata;
 
-  const [socket, setSocket] = useState(null);
+  // console.log("socket at home!!!!!",socket)
+
+  //   const socketStatus=socket.connected
+
+  // console.log("socket idddd!!!!!!!!!!!!!!!!!",socketStatus)
+
+
+  // const [socket, setSocket] = useState(null);
 
   return (
     <div style={{ display: "flex" }}>
-      <SideNavBar userdata={userData}  />
+      <SideNavBar userdata={userData} socket={socket}  />
     </div>
   );
 };

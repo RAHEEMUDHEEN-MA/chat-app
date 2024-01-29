@@ -21,20 +21,16 @@ p{
 }
 .messageContent p{
     background-color: rgb(57, 181, 53);
-    padding:  5px 10px;
-    border-radius: 16px;
+   
     color: white;
 
 }
 
 .messageMeta{
-    /* background-color: rgb(135, 190, 190); */
+    background-color: rgb(135, 190, 190);
     display: flex;
     
-    font-size: 9px;
-    color: rgba(0, 0, 0, 0.538);
-    gap: 5px;
-    
+   
 }
 
 

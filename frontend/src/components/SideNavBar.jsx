@@ -3,7 +3,18 @@ import '../assets/styles/SideNavBar.css';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
-const SideNavBar = ({ userdata }) => {
+const SideNavBar = ({ userdata,socket }) => {
+  console.log("socket at navbar",socket)
+  // console.log("socket idddd!!!!!!!!!!!!!!!!!",socket.connected)
+
+  const logout=()=>{
+ 
+      console.log("Disconnecting socket...");
+      socket.disconnect();
+      alert("logout")
+      // userdata=null
+  
+  }
   const USERDP = userdata?.name ? userdata.name.charAt(0) : '';
 
   return (
@@ -29,7 +40,7 @@ const SideNavBar = ({ userdata }) => {
       </div>
 
       <NavLink className="linkss" to="/">
-        <Button variant="outline-secondary">Logout</Button>
+        <Button variant="outline-secondary" onClick={logout}>Logout</Button>
       </NavLink>
     </div>
   );

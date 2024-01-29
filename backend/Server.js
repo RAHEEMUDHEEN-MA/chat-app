@@ -5,7 +5,7 @@ const cors = require("cors");
 const http = require("http");
 const appRouter = require("./routers/appRouter");
 
-app.use(cors());
+app.use(cors()); 
 Connection();
 app.use(express.json());
 app.use("/chatapp", appRouter);

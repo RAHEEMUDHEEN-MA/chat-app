@@ -5,8 +5,8 @@ import Chat from "./Chat";
 import RandomChat from "./RandomChat";
 
 const JoinRandomChat = ({ userdata, socket }) => {
-//   const [name,setanme] = useState(userdata.name)
-  const [name,setanme] = useState("test")
+  const [name,setanme] = useState(userdata.name)
+  // const [name,setanme] = useState("tester")
   const [room, setRoom] = useState();
   console.log(name, room);
 

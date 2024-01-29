@@ -10,7 +10,7 @@ import AddFriend from "./components/AddFriend";
 import ViewRequests from "./components/ViewRequests";
 import Chat2 from "./components/Chat2";
 // import FriendsProfile from "./components/FriendsProfile";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 import JoinRandomChat from "./components/JoinRandomChat";
 import RandomChat from "./components/RandomChat";
 
@@ -26,16 +26,16 @@ const Router = () => {
 
 
 
-  useEffect(() => {
-    const newsocket = io("http://localhost:7070");
-    setSocket(newsocket)
+  // useEffect(() => {
+  //   const newsocket = io("http://localhost:7070");
+  //   setSocket(newsocket)
 
  
-    return () => {
-      console.log("Disconnecting socket...");
-      newsocket.disconnect();
-    };
-  }, []);
+    // return () => {
+    //   console.log("Disconnecting socket...");
+    //   newsocket.disconnect();
+    // };
+  // }, []);
   return (
     <div style={{ display: "flex" }}>
       {/* <div style={{display:"flex"}}>
@@ -52,7 +52,7 @@ const Router = () => {
             path="/"
             element={
               <>
-                <Login setuserdata={setUserDataHandler} />
+                <Login setuserdata={setUserDataHandler} setSocket={setSocket} />
               </>
             }
           />
@@ -64,19 +64,19 @@ const Router = () => {
               </>
             }
           />
-          <Route
+          {/* <Route
             path="/login"
             element={
               <>
                 <Login setuserdata={setUserDataHandler} />
               </>
             }
-          />
+          /> */}
           <Route
             path="/home"
             element={
               <>
-                <Home userdata={userdata} />
+                <Home userdata={userdata} socket={socket}/>
                 <ChatList userdata={userdata} />
               </>
             }
@@ -124,7 +124,7 @@ const Router = () => {
             path="/home/randomchat"
             element={
               <>
-                <Home userdata={userdata} />
+                <Home userdata={userdata} socket={socket} />
                 <JoinRandomChat userdata={userdata} socket={socket}/>
               </>
             }
