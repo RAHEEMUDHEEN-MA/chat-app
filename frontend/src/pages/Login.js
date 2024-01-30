@@ -72,7 +72,7 @@ const Login = ({ setuserdata, setSocket }) => {
       <Row className="login_main_conatainer">
         <Col className="leftBanner">
           <div>
-            <h2>Welcome to ChatX</h2>
+            <h2>Welcome to ChatApp</h2>
           </div>
           <span className="welcome_underline"></span>
           <div>
