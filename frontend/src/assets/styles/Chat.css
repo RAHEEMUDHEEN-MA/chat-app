@@ -48,11 +48,16 @@
    
     width: 100%;
     height: 72vh;
-    overflow-y: scroll;
-    padding:  0px 5px
+    overflow-y: auto;
+    padding:  0px 5px;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: transparent transparent; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
    
 }
-
+.chat_body::-webkit-scrollbar {
+    width: 1px; /* Safari and Chrome */
+  }
 .chatContentBody{
 
     margin-bottom: 2px;
@@ -74,7 +79,7 @@
     color: gray;
     font-size: 8px;
     text-align: start;
-    padding: 0px 7px;
+    padding: 0px 10px;
      /* background-color: red; */
 
 }
@@ -92,7 +97,7 @@
 }
 #yourContent .chatTime {
     text-align: end;
-    padding: 0px 7px;
+    padding: 0px 11px;
 }
 
 
@@ -122,3 +127,12 @@
 }
 
 
+/* 
+@media only screen and (max-width: 1000px) {
+    .chat{
+      background-color: red;
+    }
+    
+  }
+   */
+  

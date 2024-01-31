@@ -13,3 +13,10 @@
 }
 
 
+@media only screen and (max-width: 1000px) {
+  .chat{
+    background-color: red;
+  }
+  
+}
+

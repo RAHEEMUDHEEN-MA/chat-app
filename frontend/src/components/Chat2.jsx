@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, FormControl, FormGroup, Modal } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../assets/styles/Chat.css"
 import { FaUser } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
@@ -23,6 +23,12 @@ const Chat2 = ({ userdata, socket }) => {
   const [messageList, setMessageList] = useState([]);
 
   console.log("typing : ", message);
+  const chatBodyRef = useRef(null);
+  useEffect(() => {
+
+    chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+  }, [message,messageList]);
+
 
   // --------------------------------------------
 
@@ -106,7 +112,7 @@ const Chat2 = ({ userdata, socket }) => {
     <div className="chat">
       
       <div className=" chatHeader">
-      <div className="backBTN"><IoIosArrowBack size={35}  color="gray"/> </div>
+      <Link  to={{ pathname: `/home` }}><div className="backBTN"><IoIosArrowBack size={35}  color="gray"/> </div></Link>
         <div className="listItemProfile">
         <div className="listItemDp">
                   <FaUser   size={25}/>
@@ -121,8 +127,9 @@ const Chat2 = ({ userdata, socket }) => {
 
       {/* --------------------------------------------------------------- */}
 
-      <div className="chat_body">
+      <div className="chat_body"  ref={chatBodyRef}>
         <div className="p-3">
+
           {messageList.map((chat) => (
             <div className="chatContentBody" id={chat.sender_id==userdata._id?("yourContent"):("none")}>
              <div className="chatContentWraper" >
@@ -135,6 +142,7 @@ const Chat2 = ({ userdata, socket }) => {
              </div>
             </div>
           ))}
+          
         </div>
       </div>
       {/* ----------------------------------------------------------- */}
