@@ -1,24 +1,70 @@
 .chat_list{
-    height: 100vh;
-    width: 500px;
+    height: 100%;
+    min-width: 380px;
     display: flex;
     flex-direction:column;
+    border-radius: 7px;
+    background-color: #d8dcff74;
+    overflow: hidden;
+    margin: 0px 5px;
+    /* padding: 10px; */
+    /* border: 100px; */
 }
 
 .chat_list_head{
     /* border: 1px solid; */
     padding: 15px;
-    background-color: rgba(187, 187, 187, 0.277);
-    color: white;
+    background-color: #dad3ff;
+    color: rgb(104, 101, 101);
     text-align: left;
     padding-left: 70px;
     text-decoration: none;
+    /* margin: 0px 7px; */
 }
 
-.chat_list_container{
-/* background-color: aqua; */
-height: 2000vh;
-width: 100%;
-overflow-y: scroll;
-text-decoration: none;
-}
+.chat_list_container {
+    /* height: 2000vh; */
+    width: 100%;
+    overflow-y: scroll;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: transparent transparent; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-face-color: transparent; /* IE and Edge */
+    /* background-color: blue; */
+    padding: 10px 4px;
+    
+  }
+  
+  .chat_list_container::-webkit-scrollbar {
+    width: 1px; /* Safari and Chrome */
+  }
+
+  .chatListItem{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: white;
+    margin-bottom: 1px;
+    /* margin:  0px 10px; */
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.481);
+    
+  }
+
+  .chatListItem:hover{
+    background-color: rgba(182, 166, 253, 0.76);
+  }
+  .chatListItem:hover .listItemDp{
+    background-color: rgba(255, 255, 255, 0.905);
+    /* font-size: 40px; */
+  }
+  .listItemDp{
+    background-color: rgb(164, 167, 244);
+    padding: 12px;
+    border-radius: 50%;
+    color: rgb(99, 81, 239);
+  }
+  a{
+    text-decoration: none;
+  }

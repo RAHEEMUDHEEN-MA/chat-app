@@ -6,24 +6,23 @@
 
 .login_main {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #e7e7e5;
-  padding: 0%;
-  margin: 0%;
+ 
   overflow: hidden;
 }
 .login_main_conatainer {
   height: 80vh;
   border-radius: 25px;
  overflow: hidden;
-  width: 1000px;
+  width: 60%;
   background-color: white;
 }
 .leftBanner {
-  background-color: #3d5cfd;
+  background-color: #673cf4;
   color: white;
   display: flex;
   flex-direction: column;
@@ -52,14 +51,13 @@
   width: 50px;
   height: 4px;
   border-radius: 100px;
-  background-color: #4463ff;
+  background-color: #673cf4;
 }
 
 .leftBanner p {
   width: 90%;
 }
-.leftBanner button {
-}
+
 
 .login_form {
   padding: 50px;
@@ -81,7 +79,7 @@
 }
 
 .login_button {
-  background-color: #3d5cfd;
+  background-color: #673cf4;
   margin-top: 40px;
   box-shadow: 1px 1px 5px rgb(153, 153, 153),
     -1px -1px 10px rgba(128, 128, 128, 0.474);
@@ -115,6 +113,10 @@
     height: 100vh;
     border-radius: 0px;
   }
+  .signup_main_conatainer {
+    height: 100vh;
+    border-radius: 0px;
+  }
   .loginheaderholder {
     margin: 0%;
     padding: 0%;
@@ -126,10 +128,25 @@
   }
 }
 
+@media only screen and (max-width: 1000px) {
+  .login_main_conatainer{
+    width: 100%;
+  }
+  
+}
+
 /* ------------------------signUp */
 
+
+.signup_main_conatainer {
+  height: 80vh;
+  border-radius: 25px;
+ overflow: hidden;
+  width: 70%;
+  background-color: white;
+}
 .signupLeftbanner {
-  background-color: #3d5cfd;
+  background-color: #673cf4;
 
   color: white;
   display: flex;
@@ -145,7 +162,7 @@
   margin: 0px 10px 5px 0px;
 }
 .signupLeftbanner p {
-  color: rgb(185, 184, 184);
+  color: rgb(220, 218, 218);
   font-size: x-small;
 }
 
@@ -188,7 +205,14 @@
   }
   .signUPform{
     flex-direction: column;
+    gap: 10px;
     
+  }
+  .signUPform input {
+    border: none;
+    padding: 10px 10px 10px 5px;
+    text-align: left;
+    border-bottom: 3px solid rgba(128, 128, 128, 0.2);
   }
 }
 
@@ -198,15 +222,21 @@
     overflow: scroll;
     scroll-behavior: smooth;
   }
-  .login_main{
-    /* overflow: scroll; */
-  
+  .signup_main_conatainer{
+    overflow: scroll;
+    scroll-behavior: smooth;
+    height: 100vh;
+    border-radius: 0;
   }
-  .signUPform{
-    /* flex-direction: column; */
-    /* overflow: scroll; */
-    
-  }
+
  
+ 
+}
+
+@media only screen and (max-width: 1100px) {
+  .signup_main_conatainer{
+    width: 100%;
+  }
+  
 }
 

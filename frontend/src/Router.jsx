@@ -13,6 +13,7 @@ import Chat2 from "./components/Chat2";
 // import io from "socket.io-client";
 import JoinRandomChat from "./components/JoinRandomChat";
 import RandomChat from "./components/RandomChat";
+import ChatlistBanner from "./components/ChatlistBanner";
 
 const Router = () => {
   const [userdata, setuserdata] = useState([]);
@@ -78,6 +79,7 @@ const Router = () => {
               <>
                 <Home userdata={userdata} socket={socket}/>
                 <ChatList userdata={userdata} />
+                <ChatlistBanner/>
               </>
             }
           />
@@ -87,6 +89,8 @@ const Router = () => {
               <>
                 <Home userdata={userdata} />
                 <ChatList userdata={userdata} />
+                <ChatlistBanner/>
+
               </>
             }
           />

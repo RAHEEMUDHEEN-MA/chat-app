@@ -15,7 +15,7 @@ const Login = ({ setuserdata, setSocket }) => {
 
   //  let date=new Date()
   // date=date.toUTCString()
-  //  console.log("currentTimeAndDate",date)
+  //  console.log("currentTimeAndDate 1111111111111111",date)
 
   const navigate = useNavigate();
 
@@ -68,7 +68,7 @@ const Login = ({ setuserdata, setSocket }) => {
   };
 
   return (
-    <div className="login_main w-100">
+    <div className="login_main ">
       <Row className="login_main_conatainer">
         <Col className="leftBanner">
           <div>

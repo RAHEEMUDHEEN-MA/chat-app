@@ -18,13 +18,11 @@
     /* display: flex; */
     
 }
-.userdp h1 {
+.userdp h1{
     background-color: rgb(109, 109, 247);
     color: white;
     width: 64px;
     border-radius: 50%;
     font-size: 50px;
     text-align: center;
-    
-
 }

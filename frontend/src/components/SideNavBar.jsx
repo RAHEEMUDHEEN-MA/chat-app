@@ -1,47 +1,72 @@
 
 import '../assets/styles/SideNavBar.css';
 import { Button } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { IoMdChatbubbles } from "react-icons/io";
+import { MdPersonSearch } from "react-icons/md";
+import { FaUserFriends } from "react-icons/fa";
+import { CgLogOut } from "react-icons/cg";
+import { FaUser } from "react-icons/fa";
+import { FaUserPlus } from "react-icons/fa6";
+import { RiUserReceivedFill } from "react-icons/ri";
+
+
+// const chatIcon=require("../assets/icons&logos/chat-96.png")
+// import chaticon from '../assets/styles/icons8-twitter-circled-50.png'
+
+
+
 
 const SideNavBar = ({ userdata,socket }) => {
   console.log("socket at navbar",socket)
+  const navigate = useNavigate();
   // console.log("socket idddd!!!!!!!!!!!!!!!!!",socket.connected)
 
   const logout=()=>{
  
-      console.log("Disconnecting socket...");
-      socket.disconnect();
+      // console.log("Disconnecting socket...");
+      // socket.disconnect();
       alert("logout")
+      navigate('/new-route', { replace: true });
       // userdata=null
   
   }
   const USERDP = userdata?.name ? userdata.name.charAt(0) : '';
+  // const USERDP = "A"
 
   return (
-    <div className='navbar_holder'>
+    <div>
+      <div className='navbar_holder'>
       <div className='top_bar'>
         <div className='navbar_profile'>
-          <NavLink className="linkss" to="/profile">
-            {USERDP}
+          <NavLink class='userDP'  to="/profile">
+          {/* <FaUser  size={25}/> */}
+          <h1>{USERDP}</h1>
+        
+
           </NavLink>
         </div>
 
-        <NavLink className="linkss" to="/home/chat">
-          Chats
-        </NavLink>
+        <NavLink className="linkss" to="/home/chat" activeClassName="activeLink">
+            <IoMdChatbubbles className="navIcons" />
+            
+          </NavLink>
 
-        <NavLink className="linkss" to="/home/search">
-          Search
-        </NavLink>
+          <NavLink className="linkss" to="/home/search" activeClassName="activeLink">
+            <FaUserPlus className="navIcons" />
+          </NavLink>
 
-        <NavLink className="linkss" to="/home/requests">
-          Requests
-        </NavLink>
+          <NavLink className="linkss" to="/home/requests" activeClassName="activeLink">
+            <FaUserFriends className="navIcons" />
+          </NavLink>
       </div>
 
-      <NavLink className="linkss" to="/">
-        <Button variant="outline-secondary" onClick={logout}>Logout</Button>
+      <NavLink className={"linkss"} to="/">
+        <CgLogOut className='navIcons' size={25} onClick={logout} />
+
+
       </NavLink>
+    </div>
     </div>
   );
 };

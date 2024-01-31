@@ -2,6 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, FormControl, FormGroup, Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import "../assets/styles/Chat.css"
+import { FaUser } from "react-icons/fa";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoMdSend } from "react-icons/io";
+import moment from 'moment-timezone'
+
+
+
 
 import FriendsProfile from "./FriendsProfile";
 
@@ -44,6 +52,7 @@ const Chat2 = ({ userdata, socket }) => {
           "http://localhost:7070/chatapp/chathistory",
           {
             sender_id: userdata._id,
+            // sender_id: "65b0b0b29046aea7e722c9f5",
             receiver_id: friendID.id,
           }
         );
@@ -95,29 +104,41 @@ const Chat2 = ({ userdata, socket }) => {
 
   return (
     <div className="chat">
-      <div className="d-flex align-items-center gap-5 p-3 px-5 bg-primary-subtle">
-        <div>
-          <button className="friend_dp" onClick={handleShow}>
-            {friendMeta?.name ? friendMeta.name.charAt(0) : "U"}
-          </button>
-        </div>
-        <h5 className="text-white mx-5 text">
+      
+      <div className=" chatHeader">
+      <div className="backBTN"><IoIosArrowBack size={35}  color="gray"/> </div>
+        <div className="listItemProfile">
+        <div className="listItemDp">
+                  <FaUser   size={25}/>
+
+              </div>
+        
+        <h5 className=" listItemProfileName">
           {friendMeta ? friendMeta.name : "user"}
         </h5>
+        </div>
       </div>
 
-      <div className="chat_body bg-gray h-50">
+      {/* --------------------------------------------------------------- */}
+
+      <div className="chat_body">
         <div className="p-3">
           {messageList.map((chat) => (
-            <div className="m-1  bg-danger-subtle">
-              <p>{chat.content}</p>
-              <p>{chat.sender_name}</p>
-              <p>{chat.date}</p>
+            <div className="chatContentBody" id={chat.sender_id==userdata._id?("yourContent"):("none")}>
+             <div className="chatContentWraper" >
+             <p className="chatContent">{chat.content}</p>
+              {/* <p>{chat.sender_name}</p> */}
+              {/* const istDate = moment.utc(utcDate).tz("Asia/Kolkata").format(); */}
+
+              {/* <p className="chatTime">{chat.date}</p> */}
+              <p className="chatTime">{moment.utc(chat.date).tz("Asia/Kolkata").format('HH:mm')}</p>
+             </div>
             </div>
           ))}
         </div>
       </div>
-      <div className="d-flex justify-content-center ">
+      {/* ----------------------------------------------------------- */}
+      <div className="chatFooter ">
         <FormGroup className="d-flex gap-3 m-4 ">
           <FormControl
             value={message}
@@ -128,15 +149,15 @@ const Chat2 = ({ userdata, socket }) => {
               e.key === "Enter" && sendMessage();
             }}
             placeholder="type your message"
-            className="w-75 xl"
+            // className="w-75 xl"
           ></FormControl>
-          <Button
+          <Button className="sendBTN"
             disabled={!message}
             onClick={() => {
               sendMessage();
             }}
           >
-            Send
+            <IoMdSend   size={30}/>
           </Button>
         </FormGroup>
       </div>

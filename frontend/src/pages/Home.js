@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import  "../assets/styles/Home.css"
 
 import SideNavBar from "../components/SideNavBar";
 
@@ -15,9 +16,9 @@ const Home = ({ userdata,socket }) => {
   // const [socket, setSocket] = useState(null);
 
   return (
-    <div style={{ display: "flex" }}>
+    
       <SideNavBar userdata={userData} socket={socket}  />
-    </div>
+   
   );
 };
 

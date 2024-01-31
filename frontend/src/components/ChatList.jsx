@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../assets/styles/ChatList.css";
 import axios from "axios";
-import { Link,  } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
 // import io from "socket.io-client";
 
 const ChatList = ({ userdata }) => {
@@ -10,7 +11,7 @@ const ChatList = ({ userdata }) => {
   // const testobj={data:"test"}
 
   const _id = userdata._id;
-
+  // const _id = "65b0b0b29046aea7e722c9f5";
 
   // useEffect(() => {
   //   const newsocket = io("http://localhost:7070");
@@ -22,7 +23,7 @@ const ChatList = ({ userdata }) => {
   //     newsocket.disconnect();
   //   };
   // }, []);
-  
+
   // console.log(socket)
 
   useEffect(() => {
@@ -43,25 +44,24 @@ const ChatList = ({ userdata }) => {
   return (
     <div className="chat_list">
       <div className="chat_list_head d-flex justify-content-around">
-        <h2>Chats</h2>
+        <h3>Chats</h3>
         <Link to="/home/randomchat">room</Link>
-        
       </div>
       <div className="chat_list_container" style={{}}>
-
         {Friends.map((friend) => (
-          
           <Link
+            className="rounded-2 bg-dark"
             key={friend._id}
-            
             to={{ pathname: `/home/chat/${friend._id}` }}
           >
-            <div className="d-flex flex-column gap1 p-1">
-              <div className=" border-bottom m-1 p-3 d-flex gap-5 rounded-2">
-                <h1 style={{textDecoration:"none"}} className="px-3 text-light  bg-danger focus-ring-dark rounded-5">
-                  {friend.name.charAt(0)}
-                </h1>
-                <p>{friend.name}</p>
+            <div className="chatListItem">
+              <div className="listItemDp">
+                  <FaUser   size={25}/>
+
+              </div>
+              <div>
+                <p className="text-black">{friend.name}</p>
+                <p className="userStatus text-black-50" style={{textAlign:"left"}}>offline</p>
               </div>
             </div>
           </Link>

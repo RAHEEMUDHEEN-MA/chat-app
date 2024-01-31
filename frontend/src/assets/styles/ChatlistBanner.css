@@ -1,0 +1,37 @@
+.ChatListBAnnerMain{
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #d8dcffb6;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.ChatListBAnnerMain h1{
+    color: rgba(82, 73, 150, 0.764);
+}
+.cbmain{
+display: block;
+overflow: hidden;
+position: relative;
+   
+}
+.cb1{
+    height: 400px;
+    width: 400px;
+    background-color: rgb(208, 205, 255);
+    border-radius: 40px 50px 320px 12px;
+}
+
+.cb2{
+    height: 40px;
+    width: 200px;
+    background-color: rgb(205, 234, 255);
+    border-radius: 40px 50px 320px 12px;
+}
+.cb3{
+    height: 600px;
+    width: 200px;
+    background-color: rgb(255, 205, 253);
+    border-radius: 4px 50px 320px 112px;
+}

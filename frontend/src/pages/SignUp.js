@@ -83,7 +83,7 @@ const SignUp = () => {
 
   return (
     <div className="login_main">
-      <Row className="login_main_conatainer">
+      <Row className="signup_main_conatainer">
         <Col md={4} className="signupLeftbanner">
           <div>
             <h3>Register with ChatApp</h3>
