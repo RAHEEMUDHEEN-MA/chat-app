@@ -53,7 +53,7 @@ const SideNavBar = ({ userdata,socket }) => {
           </NavLink>
 
           <NavLink className="linkss" to="/home/search" activeClassName="activeLink">
-            <FaUserPlus className="navIcons" />
+            <MdPersonSearch className="navIcons" />
           </NavLink>
 
           <NavLink className="linkss" to="/home/requests" activeClassName="activeLink">

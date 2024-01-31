@@ -1,16 +1,44 @@
 .ChatListBAnnerMain{
     display:flex ;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 100%;
     background-color: #d8dcffb6;
     border-radius: 10px;
     box-sizing: border-box;
+    color: rgba(158, 162, 245, 0.566);
 }
 .ChatListBAnnerMain h1{
-    color: rgba(82, 73, 150, 0.764);
+    color: rgba(158, 162, 245, 0.548);
 }
-.cbmain{
+.ChatListBAnnerMain h5{
+
+}
+.ChatListBAnnerMain p{
+    font-size: 12px;
+    max-width: 600px;
+}
+
+@media screen and (max-width:1200px) {
+    .ChatListBAnnerMain p{
+        display: none;
+    }
+    
+}
+/* @media screen and (max-width:900px) {
+    .ChatListBAnnerMain {
+        display: none;
+    }
+    
+} */
+/* @media screen and (max-width:1200px) {
+    .ChatListBAnnerMain p{
+        display: none;
+    }
+    
+} */
+/* .cbmain{
 display: block;
 overflow: hidden;
 position: relative;
@@ -34,4 +62,4 @@ position: relative;
     width: 200px;
     background-color: rgb(255, 205, 253);
     border-radius: 4px 50px 320px 112px;
-}
+} */

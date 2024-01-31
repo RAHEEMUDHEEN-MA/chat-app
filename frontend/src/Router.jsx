@@ -14,6 +14,7 @@ import Chat2 from "./components/Chat2";
 import JoinRandomChat from "./components/JoinRandomChat";
 import RandomChat from "./components/RandomChat";
 import ChatlistBanner from "./components/ChatlistBanner";
+import SearchBanner from "./components/SearchBanner";
 
 const Router = () => {
   const [userdata, setuserdata] = useState([]);
@@ -111,6 +112,7 @@ const Router = () => {
               <>
                 <Home userdata={userdata} />
                 <AddFriend userdata={userdata} />
+                <SearchBanner/>
               </>
             }
           />

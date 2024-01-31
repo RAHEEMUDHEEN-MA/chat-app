@@ -1,28 +1,88 @@
-.addfriend_container{
+.addfriend_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 75%;
+  min-width: 600px;
+  background-color: #d8dcff93;
+  margin: 0px 4px;
+  padding: 20px 0px;
+  border-radius: 10px;
+}
+.searchHeader {
+  color: rgba(78, 78, 140, 0.671);
+  text-shadow: 1px 1px 10px rgba(43, 46, 247, 0.303);
+}
+.searchBar {
+
+  width: 85%;
+  display: flex;
+  gap: 8px;
+  margin-top: 25px;
+}
+.searchBar input {
+  padding: 15px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: inset 1px 1px 5px rgba(128, 128, 128, 0.396);
+}
+.searchBar button {
+  height: 53px;
+  width: 52px;
+  border-radius: 50px;
+  
+}
+.userTile {
+  margin: 50px;
+  background-color: rgba(255, 255, 255, 0.795);
+  color: rgb(88, 87, 128);
+  padding: 30px 50px;
+  border-radius: 15px;
+  box-shadow: 1px 2px 5px rgba(128, 128, 128, 0.396);
+}
+.primaryContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.307);
+}
+.userdp {
+  background-color: #5d36dbd5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  color: white;
+  border-radius: 50px;
+  margin-top: -20px;
+  border: 1px gray;
+  box-shadow: 1px 1px 20px rgba(109, 108, 108, 0.338);
+}
+
+.usermeta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  color: gray;
+  text-align: left;
+}
+.btnContainer{
+    padding-top: 10px ;
+}
+.btnContainer button{
+    background-color: #5c30ede6;
+    border: none;
+
+}
+
+.noResults{
+    height: 200px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    height: 100vh;
-    width: 100%;
-    /* background-color: antiquewhite; */
-    padding: 50px;
-
-}
-.userTile{
-    background-color: rgba(0, 0, 0, 0.093);
-    padding: 30px 60px;
-    border-radius: 15px;
-}
-
-.userdp{
-    /* display: flex; */
-    
-}
-.userdp h1{
-    background-color: rgb(109, 109, 247);
-    color: white;
-    width: 64px;
-    border-radius: 50%;
-    font-size: 50px;
-    text-align: center;
+    font-size: 30px;
+    color: rgba(128, 128, 128, 0.711);
 }
