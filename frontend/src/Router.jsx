@@ -15,6 +15,7 @@ import JoinRandomChat from "./components/JoinRandomChat";
 import RandomChat from "./components/RandomChat";
 import ChatlistBanner from "./components/ChatlistBanner";
 import SearchBanner from "./components/SearchBanner";
+import RandomChatBanner from "./components/RandomChatBanner";
 
 const Router = () => {
   const [userdata, setuserdata] = useState([]);
@@ -122,6 +123,7 @@ const Router = () => {
               <>
                 <Home userdata={userdata} />
                 <ViewRequests userdata={userdata} />
+                <SearchBanner/>
               </>
             }
           />
@@ -132,6 +134,7 @@ const Router = () => {
               <>
                 <Home userdata={userdata} socket={socket} />
                 <JoinRandomChat userdata={userdata} socket={socket}/>
+                <RandomChatBanner/>
               </>
             }
           />

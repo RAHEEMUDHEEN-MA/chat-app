@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 7px;
-  background-color: #d8dcff74;
+  background-color: #d8dcff98;
   overflow: hidden;
   margin: 0px 5px;
 }
@@ -12,6 +12,7 @@
 .chat_list_head {
   padding: 15px;
   background-color: #dad3ff;
+  /* background-color: #6a658283; */
   color: rgb(104, 101, 101);
   text-align: left;
   padding-left: 70px;
@@ -25,7 +26,7 @@
   scrollbar-color: transparent transparent;
   -ms-overflow-style: none;
   scrollbar-face-color: transparent;
-  padding: 10px 4px;
+  padding: 10px 1px;
 }
 
 .chat_list_container::-webkit-scrollbar {

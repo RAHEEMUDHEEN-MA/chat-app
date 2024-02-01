@@ -75,14 +75,19 @@
 }
 .btnContainer button{
     background-color: #5c30ede6;
+ 
     border: none;
 
 }
 
 .noResults{
-    height: 200px;
+    height: 50px;
     display: flex;
     align-items: center;
-    font-size: 30px;
+    font-size: 25px;
     color: rgba(128, 128, 128, 0.711);
+}
+
+#unfriendBTN{
+  background-color: rgba(224, 17, 17, 0.825);
 }

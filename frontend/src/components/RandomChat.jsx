@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import "../assets/styles/RandomChat.css";
 import { IoMdSend } from "react-icons/io";
-import { Button } from "react-bootstrap";
+import { Button, FormControl } from "react-bootstrap";
 function RandomChat({ socket, room, name }) {
   const [curMessage, setcurMessage] = useState("");
   const [messageList, setmessageList] = useState([]);
@@ -47,14 +47,14 @@ function RandomChat({ socket, room, name }) {
           className="chat-header p-3"
           style={{
             // backgroundColor: "gray",
-            color: "black",
+            color: "gray",
          
             padding: "5px",
           }}
         >
           <h2>Random Chat</h2>
         </div>
-        <div className="chat-body" style={{ height: "480px" }}>
+        <div className="chat-body" style={{ height: "480px", padding:"20px" }}>
           <ScrollToBottom className="chatBody">
             {messageList.map((content) => {
               return (
@@ -80,8 +80,8 @@ function RandomChat({ socket, room, name }) {
             })}
           </ScrollToBottom>
         </div>
-        <div className="chat-footer p-2 py-3 w-100  d-flex">
-          <input
+        <div className=" d-flex chat-footer gap-3 p-2  w-100  ">
+          <FormControl
             value={curMessage}
             onChange={(e) => {
               setcurMessage(e.target.value);
@@ -93,24 +93,28 @@ function RandomChat({ socket, room, name }) {
             placeholder="Enter your message"
             style={{
               boxShadow: "1px 1px 5px gray",
-              padding: "8px",
+              padding: "18px",
               border: "none",
               borderRadius: "10px",
               color: "black",
-              width:"100%"
+              width:"100%",
+           
             }}
           />
           <Button
             onClick={sendMessage}
-            className="mx-2"
+            variant="primary"
+            className="mx-2 rounded-5  d-flex justify-content-center align-items-center"
             style={{
               boxShadow: "2px 1px 5px gray",
-              height: "40px",
+              // height: "40px",
+             
+              border:"none"
              
             }}
           >
             {/* <IoMdSend /> */}
-            send
+            <IoMdSend   size={30}/>
           </Button>
         </div>
       </div>

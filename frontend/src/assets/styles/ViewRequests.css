@@ -1,42 +1,47 @@
-.friendRequest_main{
-    background-color: rgba(0, 47, 255, 0.093);
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    /* justify-content: center; */
-    padding: 20px;
-    flex-direction: column;
-    gap: 20px;
+.friendRequest_main {
+  background-color: rgba(0, 47, 255, 0.093);
+  height: 100vh;
+
+  min-width: 600px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 20px;
+  flex-direction: column;
+  gap: 20px;
+}
+.friendRequest_main h1{
+    color: rgb(130, 130, 132);
 
 }
 
-.request_tile{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px;
-    background-color: white;
-    border-radius: 15px;
-    row-gap: 10px;
+.requests {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 15px;
+  /* color: white; */
+  gap: 20px;
+  box-shadow: 1px 2px 5px rgba(128, 128, 128, 0.396);
 }
 
-.dp {
-    border-radius: 50%;
-    background-color: rgb(48, 167, 82);
-    padding: 10px;
-    font-size: 40px;
-    height: 50px;
-    width: 50px;
-    color: white;
+.reqdp {
+  display: flex;
+  border-radius: 50%;
+  background-color: rgba(207, 136, 54, 0.812);
+  padding: 10px;
+  font-size: 40px;
+  height: 50px;
+  width: 50px;
+  color: white;
 }
 
-.textbox{
-
+.textbox {
 }
 
-.btns_holder{
-    /* display: flex; */
-    /* flex-direction: row; */
-    gap: 20px;
+.btns_holder {
+  display: flex;
+  gap: 5px;
 }

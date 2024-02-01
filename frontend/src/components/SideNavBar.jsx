@@ -6,9 +6,7 @@ import { IoMdChatbubbles } from "react-icons/io";
 import { MdPersonSearch } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 import { CgLogOut } from "react-icons/cg";
-import { FaUser } from "react-icons/fa";
-import { FaUserPlus } from "react-icons/fa6";
-import { RiUserReceivedFill } from "react-icons/ri";
+import { GiMushroomHouse } from "react-icons/gi";
 
 
 // const chatIcon=require("../assets/icons&logos/chat-96.png")
@@ -31,15 +29,15 @@ const SideNavBar = ({ userdata,socket }) => {
       // userdata=null
   
   }
-  const USERDP = userdata?.name ? userdata.name.charAt(0) : '';
+  const USERDP = userdata?.name ? userdata.name.charAt(0) : 'N';
   // const USERDP = "A"
 
   return (
     <div>
       <div className='navbar_holder'>
       <div className='top_bar'>
-        <div className='navbar_profile'>
-          <NavLink class='userDP'  to="/profile">
+        <div title={userdata.name} className='navbar_profile'>
+          <NavLink title={userdata.name} class='userDP'  to="/profile">
           {/* <FaUser  size={25}/> */}
           <h1>{USERDP}</h1>
         
@@ -59,6 +57,15 @@ const SideNavBar = ({ userdata,socket }) => {
           <NavLink className="linkss" to="/home/requests" activeClassName="activeLink">
             <FaUserFriends className="navIcons" />
           </NavLink>
+
+          <NavLink className="linkss" to="/home/randomchat" activeClassName="activeLink">
+            <GiMushroomHouse className="navIcons" />
+          </NavLink>
+
+       
+
+
+     
       </div>
 
       <NavLink className={"linkss"} to="/">
@@ -66,6 +73,8 @@ const SideNavBar = ({ userdata,socket }) => {
 
 
       </NavLink>
+
+      
     </div>
     </div>
   );

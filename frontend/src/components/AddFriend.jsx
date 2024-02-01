@@ -4,8 +4,10 @@ import { Form, Button, InputGroup, Modal } from "react-bootstrap";
 import axios from "axios";
 import { IoSearchSharp } from "react-icons/io5";
 import { IoPersonAdd } from "react-icons/io5";
+import { IoPersonRemoveSharp } from "react-icons/io5";
+
 import { FaSlack, FaUser } from "react-icons/fa";
-import { PropagateLoader } from "react-spinners";
+import { BarLoader } from "react-spinners";
 
 const AddFriend = ({ userdata }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -33,19 +35,20 @@ const AddFriend = ({ userdata }) => {
         `http://localhost:7070/chatapp/search/${searchInput}`
       );
       setTimeout(() => {
+
         setLoading(false);
         setsearchResult(response.data);
         setShowtile(true);
         setRecieverID(response.data._id);
         console.log("search result::", searchResult);
-      }, 500);
+      }, 1300);
       // console.log(response.data)
     } catch (error) {
       console.log(error);
       setTimeout(() => {
         setResultStatus("No Results Found !");
         setLoading(false);
-      }, 600);
+      }, 2000);
     }
   };
 
@@ -113,7 +116,7 @@ const AddFriend = ({ userdata }) => {
       </div>
       {/* ---------------------------------------------------- */}
 
-      {loading ? <PropagateLoader /> : <div></div>}
+    <div className="pt-5">  {loading ? <BarLoader speedMultiplier={1} color="#ab98e9e6" /> : <div></div>}</div>
       {showtile ? (
         <div className="userTile">
           <div className="primaryContainer">
@@ -136,9 +139,11 @@ const AddFriend = ({ userdata }) => {
 
           {senderID != recieverID ? (
             <div className="btnContainer">
-              <Button onClick={sendRequest}>
-                Add <IoPersonAdd />{" "}
-              </Button>
+             {!searchResult.connections.includes(senderID)? <Button onClick={sendRequest}>
+                Add <IoPersonAdd />
+              </Button>:<Button id="unfriendBTN" >
+                unfriend <IoPersonRemoveSharp />
+              </Button>}
             </div>
           ) : (
             <>self</>

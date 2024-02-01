@@ -3,7 +3,7 @@ p{
     padding: 0;
     margin: 0;
 }
-.chat-body{
+.chatBody{
     padding: 15px 0px;
     /* background-color: black; */
 
@@ -21,14 +21,19 @@ p{
 }
 .messageContent p{
     background-color: rgb(57, 181, 53);
+    padding: 5px 10px;
+    border-radius: 10px;
+
    
     color: white;
+   
 
 }
 
 .messageMeta{
-    background-color: rgb(135, 190, 190);
+    /* background-color: rgb(135, 190, 190); */
     display: flex;
+    font-size: 9px;
     
    
 }
@@ -55,6 +60,7 @@ p{
 }
 
 #yourcontent p{
+    /* background-color: rgba(48, 79, 125, 0.536); */
     background-color: rgb(63, 137, 248);
    
 }
