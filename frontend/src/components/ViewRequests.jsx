@@ -9,7 +9,10 @@ import { NavLink } from "react-router-dom";
 
 const ViewRequests = ({ userdata }) => {
   const [requests, setRequests] = useState([]);
+  const [accepted, setAccepted] = useState(false);
+  const [rejected, setRejected] = useState(true);
   console.log(userdata._id);
+
   const viewRequests = async () => {
     try {
       const response = await axios.get(
@@ -24,7 +27,7 @@ const ViewRequests = ({ userdata }) => {
 
   useEffect(() => {
     viewRequests();
-  }, [userdata._id]);
+  }, [userdata, requests]);
 
   console.log("requests :", requests);
   // setRid(requests.friendRequest._id)
@@ -38,6 +41,7 @@ const ViewRequests = ({ userdata }) => {
         `http://localhost:7070/chatapp/${id}/acceptrequest`
       );
       console.log("message:", response.data);
+      setAccepted(true);
     } catch (error) {
       console.log("error in accepting request", error);
     }
@@ -58,6 +62,10 @@ const ViewRequests = ({ userdata }) => {
 
   return (
     <div className="friendRequest_main">
+      {/* <img
+       src="https://cdni.iconscout.com/illustration/premium/thumb/react-native-mobile-app-6578313-5501855.png"
+    alt=""
+  />; */}
       <h1>Friend Requests</h1>
       {requests == 0 ? (
         <div style={{ display: "flex", flexDirection: "column", gap: "180px" }}>
@@ -83,18 +91,24 @@ const ViewRequests = ({ userdata }) => {
               <a href=""></a>
             </div>
             <div className="btns_holder">
-              <Button
-                variant="success"
-                onClick={() => acceptRequest(response.friendRequest._id)}
-              >
-                <IoMdPersonAdd size={20} />
-              </Button>
-              <Button
-                variant="danger"
-                onClick={() => rejectRequest(response.friendRequest._id)}
-              >
-                <TiDeleteOutline size={20} />
-              </Button>
+            <Button
+  variant="success"
+  disabled={accepted}
+  onClick={() => acceptRequest(response.friendRequest._id)}
+>
+  {accepted ? "Accepted" : <IoMdPersonAdd  size={20} />}
+</Button>
+
+              {!accepted ? (
+                <Button
+                  variant="danger"
+                  onClick={() => rejectRequest(response.friendRequest._id)}
+                >
+                  <TiDeleteOutline size={20} />
+                </Button>
+              ) : (
+                <></>
+              )}
             </div>
             <p></p>
           </div>

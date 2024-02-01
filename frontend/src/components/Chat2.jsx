@@ -1,15 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, FormControl, FormGroup, Modal } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
-import "../assets/styles/Chat.css"
+import { Link, useNavigate, useParams } from "react-router-dom";
+import "../assets/styles/Chat.css";
 import { FaUser } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoMdSend } from "react-icons/io";
-import moment from 'moment-timezone'
-
-
-
+import moment from "moment-timezone";
 
 import FriendsProfile from "./FriendsProfile";
 
@@ -24,12 +21,21 @@ const Chat2 = ({ userdata, socket }) => {
 
   console.log("typing : ", message);
   const chatBodyRef = useRef(null);
+
   useEffect(() => {
-
+    
     chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
-  }, [message,messageList]);
+  }, [message, messageList]);
 
-
+  const Navigatee = useNavigate();
+  
+  // onKeyDown={(e) => {
+  //   if (e.key === "Escape") {
+  //     alert("Escape key pressed");
+  //     // Uncomment the following line to navigate back
+  //     // Navigatee(-1);
+  //   }
+  // }}
   // --------------------------------------------
 
   const [show, setShow] = useState(false);
@@ -93,14 +99,14 @@ const Chat2 = ({ userdata, socket }) => {
 
   // recieving message------------------------------------------
 
-  useEffect(() => {
-    socket.off("recieveChatMessage").on("recieveChatMessage", (message) => {
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!56");
-      if (message.receiver_id === userdata._id) {
-        setMessageList((prevMessages) => [...prevMessages, message]);
-      }
-    });
-  }, [message]);
+  // useEffect(() => {
+  //   socket.off("recieveChatMessage").on("recieveChatMessage", (message) => {
+  //     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!56");
+  //     if (message.receiver_id === userdata._id) {
+  //       setMessageList((prevMessages) => [...prevMessages, message]);
+  //     }
+  //   });
+  // }, [message]);
 
   useEffect(() => {
     setMessageList([]);
@@ -110,39 +116,44 @@ const Chat2 = ({ userdata, socket }) => {
 
   return (
     <div className="chat">
-      
       <div className=" chatHeader">
-      <Link  to={{ pathname: `/home` }}><div className="backBTN"><IoIosArrowBack size={35}  color="gray"/> </div></Link>
+        <Link to={{ pathname: `/home` }}>
+          <div className="backBTN">
+            <IoIosArrowBack size={35} color="gray" />{" "}
+          </div>
+        </Link>
         <div className="listItemProfile">
-        <div className="listItemDp" onClick={handleShow}>
-                  <FaUser   size={25}/>
+          <div className="listItemDp" onClick={handleShow}>
+            <FaUser size={25} />
+          </div>
 
-              </div>
-        
-        <h5 className=" listItemProfileName">
-          {friendMeta ? friendMeta.name : "user"}
-        </h5>
+          <h5 className=" listItemProfileName">
+            {friendMeta ? friendMeta.name : "user"}
+          </h5>
         </div>
       </div>
 
       {/* --------------------------------------------------------------- */}
 
-      <div className="chat_body"  ref={chatBodyRef}>
+      <div className="chat_body" ref={chatBodyRef}>
         <div className="p-3">
-
           {messageList.map((chat) => (
-            <div className="chatContentBody" id={chat.sender_id==userdata._id?("yourContent"):("none")}>
-             <div className="chatContentWraper" >
-             <p className="chatContent">{chat.content}</p>
-              {/* <p>{chat.sender_name}</p> */}
-              {/* const istDate = moment.utc(utcDate).tz("Asia/Kolkata").format(); */}
+            <div
+              className="chatContentBody"
+              id={chat.sender_id == userdata._id ? "yourContent" : "none"}
+            >
+              <div className="chatContentWraper">
+                <p className="chatContent">{chat.content}</p>
+                {/* <p>{chat.sender_name}</p> */}
+                {/* const istDate = moment.utc(utcDate).tz("Asia/Kolkata").format(); */}
 
-              {/* <p className="chatTime">{chat.date}</p> */}
-              <p className="chatTime">{moment.utc(chat.date).tz("Asia/Kolkata").format('HH:mm')}</p>
-             </div>
+                {/* <p className="chatTime">{chat.date}</p> */}
+                <p className="chatTime">
+                  {moment.utc(chat.date).tz("Asia/Kolkata").format("HH:mm")}
+                </p>
+              </div>
             </div>
           ))}
-          
         </div>
       </div>
       {/* ----------------------------------------------------------- */}
@@ -153,19 +164,25 @@ const Chat2 = ({ userdata, socket }) => {
             onChange={(e) => {
               setMessage(e.target.value);
             }}
-            onKeyPress={(e) => {
-              e.key === "Enter" && sendMessage();
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                sendMessage();
+              } else if (e.key === "Escape") {
+                // alert("Escape key pressed");
+                Navigatee(-1);
+              }
             }}
             placeholder="type your message"
             // className="w-75 xl"
           ></FormControl>
-          <Button className="sendBTN"
+          <Button
+            className="sendBTN"
             disabled={!message}
             onClick={() => {
               sendMessage();
             }}
           >
-            <IoMdSend   size={30}/>
+            <IoMdSend size={30} />
           </Button>
         </FormGroup>
       </div>

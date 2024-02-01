@@ -19,6 +19,7 @@ const AddFriend = ({ userdata }) => {
   const [resultStatus, setResultStatus] = useState("");
   const [smShow, setSmShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [reqSended, setReqSended] = useState(false);
 
 
   console.log("recieverID  :", recieverID);
@@ -72,7 +73,9 @@ const AddFriend = ({ userdata }) => {
         setSmShow(!smShow);
       }
     } catch (error) {
-      console.log("error in send reques", error);
+      console.log("error in send reques", error.response.data.message);
+      alert(error.response.data.message)
+     
     }
   };
   const navigate=useNavigate()

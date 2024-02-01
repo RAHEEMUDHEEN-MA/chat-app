@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Chat App",
+  "name": "For New connections",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,14 +8,14 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "icons8-chat-32 (1).png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": " 32x32"
     },
     {
-      "src": "logo512.png",
+      "src": "icons8-chat-96 (1).png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "96x96"
     }
   ],
   "start_url": ".",

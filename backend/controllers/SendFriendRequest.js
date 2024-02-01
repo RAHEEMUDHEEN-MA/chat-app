@@ -27,7 +27,7 @@ const SendFriendRequest = async (req, res) => {
     } else {
       return res
         .status(400)
-        .json({ message: "already sended" });
+        .json({ message: "Request is already pending " });
     }
   } catch (error) {
     console.error(`Error sending friend request: ${error}`);

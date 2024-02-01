@@ -4,11 +4,13 @@ const Connection = require("./configs/Connection");
 const cors = require("cors");
 const http = require("http");
 const appRouter = require("./routers/appRouter");
+const dotenv=require('dotenv')
 
+dotenv.config()
 app.use(cors()); 
 Connection();
 app.use(express.json());
-app.use("/chatapp", appRouter);
+app.use("/chatapp", appRouter); 
 
 const server = http.createServer(app);
 
@@ -17,4 +19,4 @@ SocketIO(server);
 
 const port = 7070;
 server.listen(port, console.log(`server is running on port : ${port}`));
- 
+     

@@ -5,7 +5,7 @@ module.exports = (server) => {
   const io = new Server(server, {
     cors: {
       origin: " http://localhost:3000",
-      methods: ["GET", "POST","PUT","DELETE,UPDATE"],
+      methods: ["GET", "POST", "PUT", "DELETE,UPDATE"],
     },
   });
 
@@ -17,6 +17,22 @@ module.exports = (server) => {
     socket.on("socketTest", (data) => {
       console.log(data);
     });
+
+    // ----------- -------------------------onlineStatus
+
+    //     let activeUsers = ["hi"];
+
+    // socket.on("setOnline", (ActiveUserID) => {
+    //     console.log("user online:", ActiveUserID);
+    //     activeUsers.push(ActiveUserID);
+    //     console.log("users active now:", activeUsers);
+    // });
+
+    // socket.on("setOffline", (deActivatingId) => {
+    //     console.log("user offline", deActivatingId);
+    //     activeUsers = activeUsers.filter((userId) => userId !== deActivatingId);
+    //     console.log("users active now:", activeUsers);
+    // });
 
     // ---------------------------one to one chat
 

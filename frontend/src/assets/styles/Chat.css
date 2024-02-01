@@ -42,7 +42,7 @@
 
 .chat_body {
   width: 100%;
-  height: 72vh;
+  height: 72%;
   overflow-y: auto;
   padding: 0px 5px;
   scrollbar-width: thin;
@@ -88,6 +88,7 @@
 .chatFooter {
   border-top: 1px solid rgba(128, 128, 128, 0.179);
   height: 15vh;
+   /* background-color: rgb(222, 21, 21); */
 }
 .chatFooter input {
   padding: 20px;
@@ -106,9 +107,11 @@
 @media only screen and (max-width: 1000px) {
   .chatFooter {
     height: 10vh;
+     /* background-color: rgb(222, 21, 21); */
   }
   .chatFooter input {
     padding: 7px;
+     /* background-color: rgb(222, 21, 21); */
   }
   .chatFooter button {
     height: 45px;
@@ -133,4 +136,20 @@
     border-radius: 20px;
     text-align: start;
   }
+}
+
+
+@media only screen and (max-width: 500px) {
+  .chat{
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    /* background-color: rgb(222, 21, 21); */
+  }
+
+  
+.chatFooter {
+  border-top: 1px solid rgba(128, 128, 128, 0.179);
+  /* height: 5vh; */
+   /* background-color: rgb(222, 21, 21); */
+}
 }

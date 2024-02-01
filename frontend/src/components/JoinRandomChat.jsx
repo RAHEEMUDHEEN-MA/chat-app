@@ -33,7 +33,7 @@ const JoinRandomChat = ({ userdata, socket }) => {
   return (
 
 
-<div className="d-flex justify-content-center w-100" style={{minWidth:"600px", backgroundColor:"#dad3ff", margin:"1px 5px" ,borderRadius:"6px"}}>
+<div className="d-flex justify-content-center w-100" style={{minWidth:"600px", backgroundColor:"#d8dcff98", margin:"1px 5px" ,borderRadius:"6px"}}>
 {/* <GiMushroomHouse className="joinroomBG" size={200}/> */}
    
     {!showChat?(<div className="d-flex w-100 ">

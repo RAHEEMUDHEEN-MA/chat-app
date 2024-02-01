@@ -3,6 +3,8 @@ import "../assets/styles/ChatList.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import { HiOutlineDotsVertical } from "react-icons/hi";
+
 import { ClimbingBoxLoader, GridLoader, ScaleLoader } from "react-spinners";
 // import io from "socket.io-client";
 
@@ -25,7 +27,7 @@ const ChatList = ({ userdata }) => {
           setFriends(response.data.user.connections);
         setLoading(false)
 
-        }, 700);
+        }, 500);
         console.log("chat list response : ", response.data.user);
       } catch (error) {}
     };
@@ -35,8 +37,9 @@ const ChatList = ({ userdata }) => {
 
   return (
     <div className="chat_list">
-      <div className="chat_list_head d-flex ">
-        <h3>Chats</h3>
+      <div className="chat_list_head d-flex  ">
+        <h3>Messages</h3>
+        
         {/* <Link to="/home/randomchat">room</Link> */}
       </div>
       <div className="chat_list_container" style={{}}>

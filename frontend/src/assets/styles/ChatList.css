@@ -11,6 +11,7 @@
 
 .chat_list_head {
   padding: 15px;
+  display: none;
   background-color: #dad3ff;
   /* background-color: #6a658283; */
   color: rgb(104, 101, 101);
@@ -63,5 +64,32 @@ a {
 @media only screen and (max-width: 1000px) {
   .chat_list {
     min-width: 300px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .chat_list{
+      width: 100%;
+      height: 100vh;
+      padding-top: 4vh;
+      /* background-color: rgb(222, 21, 21); */
+      /* display: none; */
+
+
+  }
+  .chat_list{
+    margin: 0;
+  }
+  .chat_list_head{
+    display: none;
+    overflow: hidden;
+    width: 0px;
+    height: 0px;
+    margin-bottom: 10px;
+
+  }
+  .chat_list_head h3{
+    font-size: 1px;
+    margin: -10px;
   }
 }

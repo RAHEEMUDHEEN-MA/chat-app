@@ -4,6 +4,7 @@ import "../assets/styles/ChatlistBanner.css";
 const SearchBanner = () => {
   return (
     <div className="ChatListBAnnerMain">
+     
       <h1>ChatApp</h1>
       <h5> Find Friends</h5>
       <p>
