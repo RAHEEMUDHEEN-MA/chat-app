@@ -6,8 +6,9 @@ import { IoSearchSharp } from "react-icons/io5";
 import { IoPersonAdd } from "react-icons/io5";
 import { IoPersonRemoveSharp } from "react-icons/io5";
 
-import { FaSlack, FaUser } from "react-icons/fa";
+import {  FaUser } from "react-icons/fa";
 import { BarLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom";
 
 const AddFriend = ({ userdata }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -18,7 +19,7 @@ const AddFriend = ({ userdata }) => {
   const [resultStatus, setResultStatus] = useState("");
   const [smShow, setSmShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [alreadyFriend, setAlreadyFriend] = useState(false);
+
 
   console.log("recieverID  :", recieverID);
   console.log("senderID :", senderID);
@@ -74,6 +75,26 @@ const AddFriend = ({ userdata }) => {
       console.log("error in send reques", error);
     }
   };
+  const navigate=useNavigate()
+
+  const unFriend = async () => {
+    console.log("Unfriend clicked");
+
+   
+    try {
+      const response = await axios.put(
+        "http://localhost:7070/chatapp/unfriend",
+        {
+          requestingId: senderID,
+          targetId: recieverID,
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+    navigate("/home/search");
+  };
 
   return (
     <div className="addfriend_container">
@@ -101,7 +122,7 @@ const AddFriend = ({ userdata }) => {
             placeholder="mobile number"
             type="text"
             onKeyPress={(e) => {
-              e.key == "Enter" && searchUser();
+              e.key === "Enter" && searchUser();
             }}
             onChange={(e) => {
               setSearchInput(e.target.value);
@@ -137,11 +158,11 @@ const AddFriend = ({ userdata }) => {
           </div>
           <div></div>
 
-          {senderID != recieverID ? (
+          {senderID !== recieverID ? (
             <div className="btnContainer">
              {!searchResult.connections.includes(senderID)? <Button onClick={sendRequest}>
                 Add <IoPersonAdd />
-              </Button>:<Button id="unfriendBTN" >
+              </Button>:<Button onClick={unFriend} id="unfriendBTN" >
                 unfriend <IoPersonRemoveSharp />
               </Button>}
             </div>

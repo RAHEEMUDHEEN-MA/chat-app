@@ -114,7 +114,7 @@ const Chat2 = ({ userdata, socket }) => {
       <div className=" chatHeader">
       <Link  to={{ pathname: `/home` }}><div className="backBTN"><IoIosArrowBack size={35}  color="gray"/> </div></Link>
         <div className="listItemProfile">
-        <div className="listItemDp">
+        <div className="listItemDp" onClick={handleShow}>
                   <FaUser   size={25}/>
 
               </div>
@@ -177,7 +177,7 @@ const Chat2 = ({ userdata, socket }) => {
           <Modal.Title>Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <FriendsProfile data={{ friendMeta, userData }} />
+          <FriendsProfile data={{ friendMeta, userdata }} />
         </Modal.Body>
       </Modal>
 

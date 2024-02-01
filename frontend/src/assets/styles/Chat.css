@@ -33,7 +33,9 @@
 .backBTN:hover {
   background-color: #b5bbf2ab;
 }
-
+.listItemDp:hover{
+  cursor: pointer;
+}
 .listItemProfileName {
   color: rgba(0, 0, 0, 0.593);
 }

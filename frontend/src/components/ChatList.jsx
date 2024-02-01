@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../assets/styles/ChatList.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { ClimbingBoxLoader, GridLoader, ScaleLoader } from "react-spinners";
 // import io from "socket.io-client";
@@ -30,7 +30,7 @@ const ChatList = ({ userdata }) => {
       } catch (error) {}
     };
     loadlist();
-  }, [_id]);
+  }, [_id,]);
   console.log("FRIENDS:", Friends);
 
   return (

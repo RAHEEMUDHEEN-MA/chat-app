@@ -2,33 +2,36 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import "../assets/styles/FriendsProfile.css";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const FriendsProfile = ({data}) => {
-  const { friendMeta, userData } = data;
-  const navigate=useNavigate()
- 
-  console.log("User At profile", userData);
+const FriendsProfile = ({ data }) => {
+  const { friendMeta, userdata } = data;
+  const navigate = useNavigate();
+
+  console.log("User At profile", userdata);
   console.log("friend At profile", friendMeta);
 
   const handleclick = async () => {
     console.log("Unfriend clicked");
+    // console.log( userData._id)
+      console.log(friendMeta._id)
 
     try {
-      const response=await axios.put("http://localhost:7070/chatapp/unfriend",{
-        requestingId: userData._id,
-        targetId: friendMeta._id
-       
-    })
-    console.log(response)
+      const response = await axios.put(
+        "http://localhost:7070/chatapp/unfriend",
+        {
+          requestingId: userdata._id,
+          targetId: friendMeta._id,
+        }
+      );
+      
+      console.log(response);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-      navigate("/home")
+    navigate("/home/chat");
   };
 
-  // Additional logging to check if the component renders
-  // console.log("Rendering FriendsProfile component");
 
   return (
     <div className="profile_container">
@@ -37,12 +40,16 @@ const FriendsProfile = ({data}) => {
           {friendMeta.name.charAt(0)}
         </h1>
       </div>
-      <div><h3>{friendMeta.name}</h3></div>
+      <div>
+        <h3>{friendMeta.name}</h3>
+      </div>
       <h4>{friendMeta.connections.length}</h4>
       <div className="user_profile_meta">
         <span>
           <span>Phone </span>
-          <p>{friendMeta.mobile} <span>friends</span></p>
+          <p>
+            {friendMeta.mobile} <span>friends</span>
+          </p>
         </span>
         <span>
           <span>Email</span>

@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import "../assets/styles/ViewRequests.css";
 import axios from "axios";
 import { Button } from "react-bootstrap";
-import {  FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { IoMdPersonAdd } from "react-icons/io";
 import { TiDeleteOutline } from "react-icons/ti";
-
+import { NavLink } from "react-router-dom";
 
 const ViewRequests = ({ userdata }) => {
   const [requests, setRequests] = useState([]);
-  // const [rid,setRid]=useState("")
   console.log(userdata._id);
   const viewRequests = async () => {
     try {
@@ -60,16 +59,26 @@ const ViewRequests = ({ userdata }) => {
   return (
     <div className="friendRequest_main">
       <h1>Friend Requests</h1>
-{requests==0? (<div style={{display:"flex" ,flexDirection:"column" ,gap:"180px"}}><h4 style={{color:"rgba(48, 79, 125, 0.536)"}}>No Requests</h4> <a href="/home/search">find Friends</a></div>):("")}
-    {requests.map((response) => {
+      {requests == 0 ? (
+        <div style={{ display: "flex", flexDirection: "column", gap: "180px" }}>
+          <h4 style={{ color: "rgba(48, 79, 125, 0.536)" }}>No Requests</h4>{" "}
+          <NavLink to="/home/search">find Friends</NavLink>
+        </div>
+      ) : (
+        ""
+      )}
+      {requests.map((response) => {
         return (
           <div key={response._id} className="requests">
             <div className="reqdp">
-             <FaUser size={30}/>
+              <FaUser size={30} />
             </div>
             <div className="textbox">
               <p>
-                <span style={{fontWeight:"600"}}>{response.senderInfo.name}</span> Requested to add you
+                <span style={{ fontWeight: "600" }}>
+                  {response.senderInfo.name}
+                </span>{" "}
+                Requested to add you
               </p>
               <a href=""></a>
             </div>
@@ -78,15 +87,13 @@ const ViewRequests = ({ userdata }) => {
                 variant="success"
                 onClick={() => acceptRequest(response.friendRequest._id)}
               >
-               <IoMdPersonAdd size={20}  />
-
+                <IoMdPersonAdd size={20} />
               </Button>
               <Button
                 variant="danger"
                 onClick={() => rejectRequest(response.friendRequest._id)}
               >
-               <TiDeleteOutline size={20} />
-
+                <TiDeleteOutline size={20} />
               </Button>
             </div>
             <p></p>
