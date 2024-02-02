@@ -73,7 +73,6 @@ const SignUp = () => {
             setLoading(false)
           }, 500);
           
-          console.log(error.response.data.error);
         }
       } else {
         setNotFilled("Please fill in all required fields.");

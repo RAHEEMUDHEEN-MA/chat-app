@@ -72,6 +72,8 @@
 }
 .btnContainer{
     padding-top: 10px ;
+    display: flex;
+    justify-content: center;
 }
 .btnContainer button{
     background-color: #5c30ede6;
@@ -90,4 +92,18 @@
 
 #unfriendBTN{
   background-color: rgba(224, 17, 17, 0.825);
+}
+
+@media only screen and (max-width: 500px){
+  .addfriend_container{
+    margin-top: 10vh;
+   
+    min-width: 400px;
+    width: 100%;
+  /* background-color: red; */
+  }
+  .userTile {
+    padding: 20px 25px;
+    text-align: left;
+  }
 }

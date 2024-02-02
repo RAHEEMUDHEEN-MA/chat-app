@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 // import chaticon from '../assets/styles/icons8-twitter-circled-50.png'
 
 const SideNavBar = ({ userdata, socket }) => {
-  console.log("socket at navbar", socket);
+
   const navigate = useNavigate();
   const [smShow, setSmShow] = useState(false);
 

@@ -6,7 +6,7 @@ import { IoSearchSharp } from "react-icons/io5";
 import { IoPersonAdd } from "react-icons/io5";
 import { IoPersonRemoveSharp } from "react-icons/io5";
 
-import {  FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { BarLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +20,6 @@ const AddFriend = ({ userdata }) => {
   const [smShow, setSmShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [reqSended, setReqSended] = useState(false);
-
 
   console.log("recieverID  :", recieverID);
   console.log("senderID :", senderID);
@@ -37,7 +36,6 @@ const AddFriend = ({ userdata }) => {
         `http://localhost:7070/chatapp/search/${searchInput}`
       );
       setTimeout(() => {
-
         setLoading(false);
         setsearchResult(response.data);
         setShowtile(true);
@@ -55,6 +53,7 @@ const AddFriend = ({ userdata }) => {
   };
 
   const sendRequest = async () => {
+    const token=localStorage.getItem("token")
     setsenderID(userdata._id);
     console.log("senderID:".senderID);
     setRecieverID(searchResult._id);
@@ -67,23 +66,21 @@ const AddFriend = ({ userdata }) => {
             sender_Id: senderID,
             reciever_Id: recieverID,
             date: new Date(),
-          }
+          },
         );
         console.log(response);
         setSmShow(!smShow);
       }
     } catch (error) {
       console.log("error in send reques", error.response.data.message);
-      alert(error.response.data.message)
-     
+      alert(error.response.data.message);
     }
   };
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const unFriend = async () => {
     console.log("Unfriend clicked");
 
-   
     try {
       const response = await axios.put(
         "http://localhost:7070/chatapp/unfriend",
@@ -140,7 +137,14 @@ const AddFriend = ({ userdata }) => {
       </div>
       {/* ---------------------------------------------------- */}
 
-    <div className="pt-5">  {loading ? <BarLoader speedMultiplier={1} color="#ab98e9e6" /> : <div></div>}</div>
+      <div className="pt-5">
+        {" "}
+        {loading ? (
+          <BarLoader speedMultiplier={1} color="#ab98e9e6" />
+        ) : (
+          <div></div>
+        )}
+      </div>
       {showtile ? (
         <div className="userTile">
           <div className="primaryContainer">
@@ -163,11 +167,15 @@ const AddFriend = ({ userdata }) => {
 
           {senderID !== recieverID ? (
             <div className="btnContainer">
-             {!searchResult.connections.includes(senderID)? <Button onClick={sendRequest}>
-                Add <IoPersonAdd />
-              </Button>:<Button onClick={unFriend} id="unfriendBTN" >
-                unfriend <IoPersonRemoveSharp />
-              </Button>}
+              {!searchResult.connections.includes(senderID) ? (
+                <Button onClick={sendRequest}>
+                  Add <IoPersonAdd />
+                </Button>
+              ) : (
+                <Button onClick={unFriend} id="unfriendBTN">
+                  unfriend <IoPersonRemoveSharp />
+                </Button>
+              )}
             </div>
           ) : (
             <>self</>

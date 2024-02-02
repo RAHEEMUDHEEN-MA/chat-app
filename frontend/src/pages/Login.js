@@ -21,8 +21,7 @@ const Login = ({ setuserdata, setSocket }) => {
 
   const LogIn = async () => {
     setLoading(true);
-    if (mobile.length === 10 && password !== +"") {
-      console.log("Submitted", mobile, password);
+    if (mobile.length === 10 && password !== "") {
 
       try {
         const response = await axios.post(
@@ -33,7 +32,7 @@ const Login = ({ setuserdata, setSocket }) => {
           }
         );
 
-        console.log(response.data.userdata);
+        localStorage.setItem("token",JSON.stringify(response.data.token))
 
         setuserdata(response.data.userdata);
         setAuthfailed("");

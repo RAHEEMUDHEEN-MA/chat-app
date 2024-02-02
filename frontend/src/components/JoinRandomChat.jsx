@@ -8,7 +8,7 @@ const JoinRandomChat = ({ userdata, socket }) => {
   const [name,setanme] = useState(userdata.name)
   // const [name,setanme] = useState("tester")
   const [room, setRoom] = useState();
-  console.log(name, room);
+
 
   const [showChat, setShowChat] = useState(false);
 

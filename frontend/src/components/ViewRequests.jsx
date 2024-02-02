@@ -11,7 +11,7 @@ const ViewRequests = ({ userdata }) => {
   const [requests, setRequests] = useState([]);
   const [accepted, setAccepted] = useState(false);
   const [rejected, setRejected] = useState(true);
-  console.log(userdata._id);
+
 
   const viewRequests = async () => {
     try {
@@ -29,7 +29,6 @@ const ViewRequests = ({ userdata }) => {
     viewRequests();
   }, [userdata, requests]);
 
-  console.log("requests :", requests);
   // setRid(requests.friendRequest._id)
   // console.log("requestID:",rid)
 
@@ -40,7 +39,7 @@ const ViewRequests = ({ userdata }) => {
       const response = await axios.put(
         `http://localhost:7070/chatapp/${id}/acceptrequest`
       );
-      console.log("message:", response.data);
+ 
       setAccepted(true);
     } catch (error) {
       console.log("error in accepting request", error);

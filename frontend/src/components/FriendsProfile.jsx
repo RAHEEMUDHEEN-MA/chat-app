@@ -8,8 +8,7 @@ const FriendsProfile = ({ data }) => {
   const { friendMeta, userdata } = data;
   const navigate = useNavigate();
 
-  console.log("User At profile", userdata);
-  console.log("friend At profile", friendMeta);
+
 
   const handleclick = async () => {
     console.log("Unfriend clicked");

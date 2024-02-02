@@ -18,17 +18,17 @@ const Chat2 = ({ userdata, socket }) => {
   const [friendMeta, setFriendMeta] = useState({});
   const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
+  const [tokenError,setTokenError]=useState(null)
 
-  console.log("typing : ", message);
+
   const chatBodyRef = useRef(null);
 
   useEffect(() => {
-    
     chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
   }, [message, messageList]);
 
   const Navigatee = useNavigate();
-  
+
   // onKeyDown={(e) => {
   //   if (e.key === "Escape") {
   //     alert("Escape key pressed");
@@ -57,6 +57,8 @@ const Chat2 = ({ userdata, socket }) => {
       }
     };
     fetchFriend();
+    const token = JSON.parse(localStorage.getItem("token"));
+
 
     const fetchChatHistory = async () => {
       try {
@@ -66,10 +68,20 @@ const Chat2 = ({ userdata, socket }) => {
             sender_id: userdata._id,
             // sender_id: "65b0b0b29046aea7e722c9f5",
             receiver_id: friendID.id,
+          },
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
           }
         );
         setMessageList(response.data);
-      } catch (error) {}
+      } catch (error) {
+     
+        if (error.response && error.response.status == 401) {
+          setTokenError(error.response.data.message)
+        }
+      }
     };
     fetchChatHistory();
   }, [friendID]);
@@ -99,23 +111,37 @@ const Chat2 = ({ userdata, socket }) => {
 
   // recieving message------------------------------------------
 
-  // useEffect(() => {
-  //   socket.off("recieveChatMessage").on("recieveChatMessage", (message) => {
-  //     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!56");
-  //     if (message.receiver_id === userdata._id) {
-  //       setMessageList((prevMessages) => [...prevMessages, message]);
-  //     }
-  //   });
-  // }, [message]);
+  useEffect(() => {
+    socket.off("recieveChatMessage").on("recieveChatMessage", (message) => {
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!56");
+      if (message.receiver_id === userdata._id) {
+        setMessageList((prevMessages) => [...prevMessages, message]);
+      }
+    });
+  }, [message]);
 
   useEffect(() => {
     setMessageList([]);
   }, [friendID]);
 
-  console.log("chat history yess : ", messageList);
 
   return (
     <div className="chat">
+      <Modal show={tokenError!=null} >
+        <Modal.Header >
+          <Modal.Title>Token Expired</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>  Token is expired in this section.Please login again to coutinue the seection</Modal.Body>
+        <Modal.Footer className="d-flex justify-content-center">
+          {/* <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button> */}
+          <Link to={"/"}><Button variant="primary">
+            Login
+          </Button></Link>
+        </Modal.Footer>
+      </Modal>
+
       <div className=" chatHeader">
         <Link to={{ pathname: `/home` }}>
           <div className="backBTN">

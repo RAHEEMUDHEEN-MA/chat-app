@@ -28,12 +28,12 @@ const ChatList = ({ userdata }) => {
         setLoading(false)
 
         }, 500);
-        console.log("chat list response : ", response.data.user);
+    
       } catch (error) {}
     };
     loadlist();
   }, [_id,]);
-  console.log("FRIENDS:", Friends);
+
 
   return (
     <div className="chat_list">
