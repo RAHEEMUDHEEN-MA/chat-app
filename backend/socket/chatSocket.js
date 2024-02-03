@@ -18,6 +18,10 @@ module.exports = (server) => {
       console.log(data);
     });
 
+
+    const socketTestMessage = "socket test is OK";
+    socket.broadcast.emit("SocketTest", socketTestMessage);
+
     // ----------- -------------------------onlineStatus
 
     //     let activeUsers = ["hi"];
@@ -56,6 +60,15 @@ module.exports = (server) => {
       console.log(message);
 
       socket.broadcast.emit("recieveChatMessage", message);
+    });
+
+    // --------------------------------------typing status
+ 
+    socket.on("typing", (data) => {
+      console.log("typing:", data);
+
+    socket.broadcast.emit("ListenTyping", data);
+ 
     });
 
     // -------------------------random chat

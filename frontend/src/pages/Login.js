@@ -140,7 +140,7 @@ const Login = ({ setuserdata, setSocket }) => {
               variant="primary"
               onClick={LogIn}
             >
-              {loading ? <ClipLoader size={"20"} color="white" /> : "LOGIN"}
+              {loading ? <ClipLoader size={"20px"} color="white" /> : "LOGIN"}
             </Button>
 
             <br />

@@ -18,8 +18,8 @@ const Chat2 = ({ userdata, socket }) => {
   const [friendMeta, setFriendMeta] = useState({});
   const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
-  const [tokenError,setTokenError]=useState(null)
-
+  const [tokenError, setTokenError] = useState(null);
+  const [typingStatus, setTypingStatus] = useState(false);
 
   const chatBodyRef = useRef(null);
 
@@ -59,7 +59,6 @@ const Chat2 = ({ userdata, socket }) => {
     fetchFriend();
     const token = JSON.parse(localStorage.getItem("token"));
 
-
     const fetchChatHistory = async () => {
       try {
         const response = await axios.post(
@@ -77,9 +76,8 @@ const Chat2 = ({ userdata, socket }) => {
         );
         setMessageList(response.data);
       } catch (error) {
-     
         if (error.response && error.response.status == 401) {
-          setTokenError(error.response.data.message)
+          setTokenError(error.response.data.message);
         }
       }
     };
@@ -113,7 +111,7 @@ const Chat2 = ({ userdata, socket }) => {
 
   useEffect(() => {
     socket.off("recieveChatMessage").on("recieveChatMessage", (message) => {
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!56");
+      // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!56");
       if (message.receiver_id === userdata._id) {
         setMessageList((prevMessages) => [...prevMessages, message]);
       }
@@ -124,21 +122,47 @@ const Chat2 = ({ userdata, socket }) => {
     setMessageList([]);
   }, [friendID]);
 
+  // ---------------------------------------------------------------
+  const typing = () => {
+    const typingData = {
+      typingID: userdata._id,
+      recieveingID: friendID.id,
+    };
+    socket.emit("typing", typingData);
+    // console.log("im typing",typingData)
+  };
+
+  useEffect(() => {
+    socket.on("ListenTyping", (data) => {
+      console.log(data);
+      if (data.typingID === friendID.id && data.recieveingID === userdata._id) {
+        console.log("typing");
+        setTypingStatus(true);
+        setTimeout(() => {
+          setTypingStatus(false);
+        }, 500);
+      }
+    });
+  }, [typingStatus]);
 
   return (
     <div className="chat">
-      <Modal show={tokenError!=null} >
-        <Modal.Header >
+      <Modal show={tokenError != null}>
+        <Modal.Header>
           <Modal.Title>Token Expired</Modal.Title>
         </Modal.Header>
-        <Modal.Body>  Token is expired in this section.Please login again to coutinue the seection</Modal.Body>
+        <Modal.Body>
+          {" "}
+          Token is expired in this section.Please login again to coutinue the
+          seection
+        </Modal.Body>
         <Modal.Footer className="d-flex justify-content-center">
           {/* <Button variant="secondary" onClick={handleClose}>
             Close
           </Button> */}
-          <Link to={"/"}><Button variant="primary">
-            Login
-          </Button></Link>
+          <Link to={"/"}>
+            <Button variant="primary">Login</Button>
+          </Link>
         </Modal.Footer>
       </Modal>
 
@@ -153,9 +177,16 @@ const Chat2 = ({ userdata, socket }) => {
             <FaUser size={25} />
           </div>
 
-          <h5 className=" listItemProfileName">
-            {friendMeta ? friendMeta.name : "user"}
-          </h5>
+          <div style={{  }}>
+            <h5 className=" listItemProfileName m-0">
+              {friendMeta ? friendMeta.name : "user"}
+            </h5>
+            <div
+              style={{ height: "20px", overflow: "hidden", marginTop: "0px", textAlign:"left", color:"gray" ,fontSize:"12px"}}
+            >
+              {typingStatus ? <p >typing..</p> : <> </>}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -184,11 +215,12 @@ const Chat2 = ({ userdata, socket }) => {
       </div>
       {/* ----------------------------------------------------------- */}
       <div className="chatFooter ">
-        <FormGroup className="d-flex gap-3 m-4 ">
+        <FormGroup className="d-flex gap-3 mx-4 my-3 ">
           <FormControl
             value={message}
             onChange={(e) => {
               setMessage(e.target.value);
+              typing();
             }}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
