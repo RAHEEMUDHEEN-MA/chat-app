@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "../assets/styles/UserProfile.css";
 import { MdEdit } from "react-icons/md";
+const [profile,setProfile]=useState()
 
 const UserProfile = () => {
   return (
