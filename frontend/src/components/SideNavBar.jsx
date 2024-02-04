@@ -23,15 +23,11 @@ const SideNavBar = ({ userdata, socket }) => {
 
   // console.log("socket idddd!!!!!!!!!!!!!!!!!",socket.connected)
 
-  const logout = () => {
-    // console.log("Disconnecting socketttt...");
-    // setSmShow(true)
-    // socket.disconnect();
-
+  const logout = async() => {
     navigate("/", { replace: true });
     userdata=null
-    // socket.emit("setOffline", userdata._id);
-    // userdata=null
+    localStorage.removeItem('token');
+    
   };
   const USERDP = userdata?.name ? userdata.name.charAt(0) : "N";
   // const USERDP = "A"
@@ -51,16 +47,16 @@ const SideNavBar = ({ userdata, socket }) => {
            Log Out
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body className="px-5">
+        <Modal.Body className="d-flex justify-content-center">
           <Button variant="danger" onClick={logout}>Log out</Button>
-          <Button  variant="secondary">cancel</Button>
+          
         </Modal.Body>
       </Modal>
 
       <div className="navbar_holder">
         <div className="top_bar ">
           <div title={userdata.name} className="navbar_profile ">
-            <NavLink title={userdata.name} class="userDP" to="/profile">
+            <NavLink title={userdata.name} class="userDP" to="/home/profile">
               {/* <FaUser  size={25}/> */}
               <h1>{USERDP}</h1>
             </NavLink>
@@ -100,8 +96,8 @@ const SideNavBar = ({ userdata, socket }) => {
           </NavLink>
         </div>
 
-        <NavLink id="logoutBTN" className={"linkss"} >
-          <CgLogOut className="navIcons" size={25} onClick={ ()=>{setSmShow(true)}} />
+        <NavLink id="logoutBTN" className={"linkss"} onClick={ ()=>{setSmShow(true)}} >
+          <CgLogOut className="navIcons" size={25}  />
         </NavLink>
       </div>
     </div>

@@ -24,6 +24,6 @@ const Login = async (req, res) => {
 };
 
 const genarateToken = (id) => {
-  return jwt.sign({ id }, process.env.JwtSecretKey, { expiresIn: "10 min" });
+  return jwt.sign({ id }, process.env.JwtSecretKey, { expiresIn: "2 min" });
 };
 module.exports = Login;

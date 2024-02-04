@@ -69,3 +69,7 @@ p{
     justify-content: right;
     padding-right: 10px;
 }
+
+#yourmeta .chat-author{
+    display: none;
+}

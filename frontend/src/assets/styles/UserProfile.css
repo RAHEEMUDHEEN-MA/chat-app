@@ -1,0 +1,64 @@
+.editProfileMain {
+  height: 100vh;
+  width: 100%;
+}
+
+.profileFormHeader {
+  border: 1px solid rgba(128, 128, 128, 0.278);
+  padding: 12px 25px;
+  border-radius: 0px 10px 0px 0px;
+  display: flex;
+  align-items: start;
+  color: gray;
+}
+.profileForm {
+  padding: 0px 10px;
+  /* background-color: blanchedalmond; */
+}
+
+.profilePicture {
+    /* background-color: rgb(13, 117, 208); */
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    align-items: end;
+
+
+}
+.profileDP{
+    background-color: rgba(255, 0, 0, 0.582);
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    font-size: 55px;
+    font-weight: 500;
+    align-items: center;
+    border-radius: 50%;
+}
+.DpEditBTN{
+    display: flex;
+    background-color: rgb(77, 77, 248);
+    padding: 7px;
+    border-radius: 50%;
+    margin-left: -25px;
+    margin-bottom:10px ;
+    color: white;
+    border: none;
+    /* height: 100%; */
+}
+
+
+.formInputs{
+    padding: 30px 100px;
+    display: flex;
+    flex-direction: column;
+    /* max-width: 500px; */
+    gap: 20px;
+}
+@media screen and (max-width: 900px) {
+  .profileForm {
+    padding: 10px 50px;
+  }
+}

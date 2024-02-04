@@ -2,7 +2,7 @@ const Chat = require("../models/ChatSchema");
 
 const LoadChatHistory = async (req, res) => {
   const { sender_id, receiver_id } = req.body;
-  console.log("sid:", sender_id, "rid:", receiver_id);
+  // console.log("sid:", sender_id, "rid:", receiver_id);
 
   try {
     const chatHistory = await Chat.find({
