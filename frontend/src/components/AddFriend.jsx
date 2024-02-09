@@ -148,9 +148,10 @@ const AddFriend = ({ userdata }) => {
       {showtile ? (
         <div className="userTile">
           <div className="primaryContainer">
-            <div className="userdp">
+            
+            {searchResult.profile_photo?(<img  className="userdp" src={`http://localhost:7070/profile/${searchResult.profile_photo}`} alt="dp" />):(<div className="userdp">
               <FaUser size={30} />
-            </div>
+            </div>)}
             <div>
               <div className="px-1 text-lg-start">
                 <h4>{searchResult.name}</h4>

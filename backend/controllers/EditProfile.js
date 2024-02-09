@@ -11,7 +11,7 @@ const EditProfile = async (req, res) => {
         _id,
         {
           name: name,
-          email: email, 
+          email: email,  
         },
         { new: true }
       );

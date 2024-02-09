@@ -60,7 +60,7 @@ const SignUp = () => {
           );
           console.log(response);
 
-          alert(response.status, "Registration Success");
+          // alert(response.status, "Registration Success");
           setMobileAlreadyusedAlert("");
           setTimeout(() => {
             setLoading(false);
@@ -81,7 +81,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="login_main">
+    <div className="login_main">  
       <Row className="signup_main_conatainer">
         <Col md={4} className="signupLeftbanner">
           <div>

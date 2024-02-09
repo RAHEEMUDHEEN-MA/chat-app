@@ -40,6 +40,9 @@ const UserProfile = (userdata) => {
   //////////////////////////
 
   const UploadImage = () => {
+   if (!image) {
+    return
+   }else{
     const profile_photo = new FormData();
     profile_photo.append("file", image);
     profile_photo.append("userID", userdata.userdata._id);
@@ -48,6 +51,7 @@ const UserProfile = (userdata) => {
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
     console.log("profilee", profile_photo);
+   }
   };
 
   const handleEditClick = () => {
@@ -55,13 +59,13 @@ const UserProfile = (userdata) => {
   };
 
   const handleSave = () => {
-    // saveChanges();
+    saveChanges();
     UploadImage();
   };
 
   const saveChanges = () => {
     try {
-      if (name !== "" || email !== "") {
+      if (name !== "" && email !== "") {
         axios.put(
           `http://localhost:7070/chatapp/editprofile`,
           {
@@ -77,7 +81,7 @@ const UserProfile = (userdata) => {
         );
         console.log("done");
       } else {
-        alert("errorrr");
+        console.log("not updated");
         return;
       }
     } catch (error) {

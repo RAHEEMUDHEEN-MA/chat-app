@@ -202,10 +202,7 @@ const Chat2 = ({ userdata, socket }) => {
             >
               <div className="chatContentWraper">
                 <p className="chatContent">{chat.content}</p>
-                {/* <p>{chat.sender_name}</p> */}
-                {/* const istDate = moment.utc(utcDate).tz("Asia/Kolkata").format(); */}
-
-                {/* <p className="chatTime">{chat.date}</p> */}
+              
                 <p className="chatTime">
                   {moment.utc(chat.date).tz("Asia/Kolkata").format("HH:mm")}
                 </p>

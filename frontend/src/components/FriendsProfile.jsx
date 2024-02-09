@@ -33,7 +33,8 @@ const FriendsProfile = ({ data }) => {
     <div className="profile_container ">
       <div className="profil_dp d-flex justify-content-center m-3">
         {friendMeta.profile_photo ? (
-          <img className="dpIMAGE"
+          <img
+            className="dpIMAGE"
             src={`http://localhost:7070/profile/${friendMeta.profile_photo}`}
             alt="dp"
           />
@@ -46,13 +47,14 @@ const FriendsProfile = ({ data }) => {
       <div>
         <h3>{friendMeta.name}</h3>
       </div>
-      <div className="d-flex align-items-center justify-content-center g-3"><h4>{friendMeta.connections.length}</h4><span>  Connections</span></div>
+      <div className="d-flex align-items-center justify-content-center g-3">
+        <h4>{friendMeta.connections.length}</h4>
+        <span> Connections</span>
+      </div>
       <div className="user_profile_meta">
         <span>
           <span>Phone </span>
-          <p>
-            {friendMeta.mobile} 
-          </p>
+          <p>{friendMeta.mobile}</p>
         </span>
         <span>
           <span>Email</span>

@@ -59,6 +59,7 @@
   margin-top: -20px;
   border: 1px gray;
   box-shadow: 1px 1px 20px rgba(109, 108, 108, 0.338);
+  object-fit: cover;
 }
 
 .usermeta {
