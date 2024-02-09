@@ -77,9 +77,12 @@ const ViewRequests = ({ userdata }) => {
       {requests.map((response) => {
         return (
           <div key={response._id} className="requests">
-            <div className="reqdp">
+            
+
+          {response.senderInfo.profile_photo?( <img  className="reqdp" src={`http://localhost:7070/profile/${response.senderInfo.profile_photo}`} alt="profile" /> ):(<div className="reqdp">
               <FaUser size={30} />
-            </div>
+            </div>)}
+
             <div className="textbox">
               <p>
                 <span style={{ fontWeight: "600" }}>

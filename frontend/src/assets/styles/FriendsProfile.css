@@ -1,30 +1,47 @@
 .profile_main_div{
     /* height: 100vh; */
     /* width: 100%; */
-    background-color: rgba(0, 0, 0, 0.268);
+    /* background-color: rgba(0, 0, 0, 0.268); */
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 10;
+    opacity: 1;
+    padding: 30px;
 }
 
 .profile_container {
-    /* background-color: beige; */
-    padding: 30px;
-    border-radius: 15px;
-    border: none;
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 10;
     
 }
 .friend_dp{
     font-size: 40px;
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
     background-color: rgb(103, 158, 254);
-    color: white;
+    color: white; 
     border-radius: 50%;
-    padding: 30px;
+    /* padding: 30px; */
+}
+
+.dpIMAGE{
+    height: 100px;
+    width: 100px;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+
+    
 }

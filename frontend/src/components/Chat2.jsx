@@ -173,9 +173,10 @@ const Chat2 = ({ userdata, socket }) => {
           </div>
         </Link>
         <div className="listItemProfile">
-          <div className="listItemDp" onClick={handleShow}>
+          
+          {friendMeta.profile_photo?( <img onClick={handleShow}  className="listItemDp" src={`http://localhost:7070/profile/${friendMeta.profile_photo}`} alt="" /> ):(<div className="listItemDp" onClick={handleShow}>
             <FaUser size={25} />
-          </div>
+          </div>)}
 
           <div style={{  }}>
             <h5 className=" listItemProfileName m-0">
@@ -247,14 +248,15 @@ const Chat2 = ({ userdata, socket }) => {
 
       {/* --------------------------------------------- */}
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Profile</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <FriendsProfile data={{ friendMeta, userdata }} />
-        </Modal.Body>
-      </Modal>
+      <Modal className="centered " show={show} onHide={handleClose}>
+  <Modal.Header closeButton>
+    <Modal.Title>Profile</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <FriendsProfile data={{ friendMeta, userdata }} />
+  </Modal.Body>
+</Modal>
+
 
       {/* ------------------------------------------------------- */}
     </div>

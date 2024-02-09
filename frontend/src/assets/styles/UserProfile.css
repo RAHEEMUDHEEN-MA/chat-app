@@ -28,14 +28,17 @@
 }
 .profileDP{
     background-color: rgba(255, 0, 0, 0.582);
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     display: flex;
     justify-content: center;
     font-size: 55px;
     font-weight: 500;
     align-items: center;
     border-radius: 50%;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
 }
 .DpEditBTN{
     display: flex;
@@ -48,6 +51,18 @@
     border: none;
     /* height: 100%; */
 }
+.fileinput_btn {
+  background-color: rgb(77, 77, 248);
+  height: 50px;
+  width: 50px;
+  text-decoration: none;
+  /* Add any additional styles you need */
+}
+
+/* Hide the default file input text */
+input[type="file"] {
+  display: none;
+}
 
 
 .formInputs{
@@ -55,7 +70,12 @@
     display: flex;
     flex-direction: column;
     /* max-width: 500px; */
-    gap: 20px;
+    gap: 10px;
+}
+
+.saveBTNN{
+  max-width: 200px;
+  margin: auto;
 }
 @media screen and (max-width: 900px) {
   .profileForm {

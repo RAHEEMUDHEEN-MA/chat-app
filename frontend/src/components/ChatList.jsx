@@ -56,7 +56,8 @@ const ChatList = ({ userdata }) => {
           >
             <div className="chatListItem">
               <div className="listItemDp">
-                  <FaUser   size={25}/>
+                 
+                  {friend.profile_photo?( <img  className="chatlistItemDP" src={`http://localhost:7070/profile/${friend.profile_photo}`} alt="dp" /> ):( <FaUser   size={25}/>)}
 
               </div>
               <div>

@@ -51,9 +51,22 @@
 .chatListItem:hover .listItemDp {
   background-color: rgba(255, 255, 255, 0.905);
 }
+.chatlistItemDP{
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  max-width: 100%;
+  max-width: 100%;
+  border-radius: 50%;
+}
 .listItemDp {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgb(164, 167, 244);
-  padding: 12px;
+  /* padding: 12px; */
   border-radius: 50%;
   color: rgb(99, 81, 239);
 }

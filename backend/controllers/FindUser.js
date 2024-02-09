@@ -8,13 +8,13 @@ const FindUser = async (req, res) => {
     if(!theuser){
       return res.status(400).json({message:'User not found'})
     }
-    res.json(theuser)
+    res.json(theuser) 
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
-
  
+  
 };
 
 module.exports=FindUser

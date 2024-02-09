@@ -89,7 +89,7 @@ const Router = () => {
             element={
               <>
                 <Home userdata={userdata} />
-                <UserProfile/>
+                <UserProfile userdata={userdata}/>
                 <ChatlistBanner/>
               </>
             }

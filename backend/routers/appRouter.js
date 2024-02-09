@@ -15,6 +15,9 @@ const UnFriend = require('../controllers/UnFriend')
 const SendMessage = require('../controllers/SendMessage')
 const LoadChatHistory = require('../controllers/LoadchatHistory.js')
 const VerifyToken =require('../middlewares/VerifyToken.js')
+const EditProfile = require('../controllers/EditProfile.js')
+const profilePhoto = require('../controllers/ProfilePhoto.js')
+const PhotoUpload = require('../middlewares/uploadProfilePhoto.js')
 
 const appRouter=express.Router()
 
@@ -26,6 +29,9 @@ appRouter.route('/cleardb').delete(clearDB)
 appRouter.route('/signup').post(SignUp)
 appRouter.route('/login').post(Login) 
 appRouter.route('/find/:id').get(FindUserById)
+appRouter.route('/editprofile').put(VerifyToken,EditProfile)
+appRouter.route('/upload').post(PhotoUpload.single("file"),profilePhoto)
+
 appRouter.route('/search/:mobile').get(FindUser)
 appRouter.route('/chatlist/:id').get(ViewConnections)
 appRouter.route('/sendfriendrequest').post(SendFriendRequest)
@@ -37,5 +43,5 @@ appRouter.route('/sendmessage').post(VerifyToken,SendMessage)
 appRouter.route('/chathistory').post(VerifyToken,LoadChatHistory)
 
 
-
+ 
 module.exports=appRouter   

@@ -39,8 +39,12 @@
   border-radius: 50%;
   background-color: #e76c08;
 }
-.userDP{
-
+.profileDpSideBar{
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  max-width: 100%;
+  max-width: 100%;
 }
 
 .navbar_profile a {

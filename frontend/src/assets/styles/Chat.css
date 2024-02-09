@@ -29,6 +29,9 @@
   width: 100%;
   background-color: rgb(255, 255, 255);
 }
+.listItemDp{
+  object-fit: cover;
+}
 
 .backBTN:hover {
   background-color: #b5bbf2ab;

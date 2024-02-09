@@ -17,8 +17,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   padding: 20px;
   background-color: white;
+  min-width: 500px;
   border-radius: 15px;
   /* color: white; */
   gap: 20px;
@@ -27,9 +29,11 @@
 
 .reqdp {
   display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   background-color: rgba(207, 136, 54, 0.812);
-  padding: 10px;
+  /* padding: 10px; */
   font-size: 40px;
   height: 50px;
   width: 50px;

@@ -56,9 +56,15 @@ const SideNavBar = ({ userdata, socket }) => {
       <div className="navbar_holder">
         <div className="top_bar ">
           <div title={userdata.name} className="navbar_profile ">
-            <NavLink title={userdata.name} class="userDP" to="/home/profile">
+            <NavLink title={userdata.name} class="userDP" to={`/home/profile`}>
               {/* <FaUser  size={25}/> */}
-              <h1>{USERDP}</h1>
+              {userdata.profile_photo?(  <img
+            className="profileDpSideBar"
+            src={`http://localhost:7070/profile/${userdata.profile_photo}`}
+            alt="profile"
+          />):( <h1>{USERDP}</h1>)}
+             
+            
             </NavLink>
           </div>
 
