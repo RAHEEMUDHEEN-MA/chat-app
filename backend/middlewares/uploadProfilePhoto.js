@@ -1,8 +1,6 @@
 const multer = require("multer");
 const path = require("path");
 
-// Assuming you'll require the User model later
-// const User = require("../models/UserSchema");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
