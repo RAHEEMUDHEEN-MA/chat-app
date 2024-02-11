@@ -5,10 +5,9 @@ const cors = require("cors");
 const http = require("http");
 const appRouter = require("./routers/appRouter");
 const dotenv=require('dotenv')
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
 app.use(express.static("images"));
-// app.use(express.static("public"));
 dotenv.config()
 app.use(cors()); 
 Connection(); 
