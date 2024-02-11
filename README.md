@@ -1,6 +1,6 @@
 # MERN Stack Socket.io Chat App
 
-Chat application built using the MERN stack with Socket.io for real-time one-to-one chat across users, and utilize the multer library for profile picture functionality.
+Chat application built using the MERN stack with Socket.io for real-time one-to-one chat across users, and utilize the multer middleware  library for profile picture functionality.
 
 ## Previews
 
