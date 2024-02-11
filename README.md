@@ -15,3 +15,16 @@ login page:
 
 User Profile.
 ![Screenshot 2024-02-11 172808](https://github.com/RAHEEMUDHEEN-MA/chat-app/assets/136678042/ae469033-ef13-48f0-901c-a2df50c54c82)
+
+one to one chat
+![Screenshot 2024-02-11 172845](https://github.com/RAHEEMUDHEEN-MA/chat-app/assets/136678042/22d23f7d-7b8b-4a93-bd5c-8d1bd5afa057)
+![Screenshot 2024-02-11 173052](https://github.com/RAHEEMUDHEEN-MA/chat-app/assets/136678042/5074fdf5-4854-40f1-a0a4-78c3dcbe06d9)
+
+Friends profile![Uploading Screenshot 2024-02-11 173052.png…]()
+
+![Screenshot 2024-02-11 172857](https://github.com/RAHEEMUDHEEN-MA/chat-app/assets/136678042/ce169234-79de-4a8b-9ab8-e7ed707b7a7c)
+
+find new friends using mobile number 
+![Screenshot 2024-02-11 172951](https://github.com/RAHEEMUDHEEN-MA/chat-app/assets/136678042/d5513b0b-8505-4887-8d6a-1c7afd456ab3)
+
+
