@@ -28,6 +28,11 @@ one to one chat :-
 ![Screenshot 2024-02-11 173052](https://github.com/RAHEEMUDHEEN-MA/chat-app/assets/136678042/5074fdf5-4854-40f1-a0a4-78c3dcbe06d9)
 
 
+Friend Request system :-
+
+![Screenshot 2024-02-11 175705](https://github.com/RAHEEMUDHEEN-MA/chat-app/assets/136678042/1e937abc-6f7f-4c14-a1c7-cc2b32b50036)
+
+
 
 Friends profile :-
 
@@ -39,5 +44,11 @@ Friends profile :-
 find new friends using mobile number :-
 
 ![Screenshot 2024-02-11 172951](https://github.com/RAHEEMUDHEEN-MA/chat-app/assets/136678042/d5513b0b-8505-4887-8d6a-1c7afd456ab3)
+
+
+Room chat :-
+
+![Screenshot 2024-02-11 173023](https://github.com/RAHEEMUDHEEN-MA/chat-app/assets/136678042/434ad956-2f97-4121-af6e-c30380180fda)
+
 
 
