@@ -2,11 +2,7 @@
 
 Chat application built using the MERN stack with Socket.io for real-time one-to-one chat across users, and utilize the multer library for profile picture functionality.
 
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/mern-socket-chat.git
+## Previews
 
 
 
