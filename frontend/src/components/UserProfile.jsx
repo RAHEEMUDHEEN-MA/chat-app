@@ -7,9 +7,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdFileUpload } from "react-icons/md";
 
-
 const UserProfile = (userdata) => {
- 
   const [profile, setprofile] = useState([]);
 
   const [name, setname] = useState();
@@ -40,18 +38,18 @@ const UserProfile = (userdata) => {
   //////////////////////////
 
   const UploadImage = () => {
-   if (!image) {
-    return
-   }else{
-    const profile_photo = new FormData();
-    profile_photo.append("file", image);
-    profile_photo.append("userID", userdata.userdata._id);
-    axios
-      .post("http://localhost:7070/chatapp/upload", profile_photo)
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
-    console.log("profilee", profile_photo);
-   }
+    if (!image) {
+      return;
+    } else {
+      const profile_photo = new FormData();
+      profile_photo.append("file", image);
+      profile_photo.append("userID", userdata.userdata._id);
+      axios
+        .post("http://localhost:7070/chatapp/upload", profile_photo)
+        .then((res) => console.log(res))
+        .catch((error) => console.log(error));
+      console.log("profilee", profile_photo);
+    }
   };
 
   const handleEditClick = () => {
@@ -117,13 +115,25 @@ const UserProfile = (userdata) => {
       <Form className="profileForm ">
         <div className="profilePicture pt-4">
           {/* <div className="profileDP">N</div> */}
-          {profile.profile_photo?( <img
-            className="profileDP"
-            src={`http://localhost:7070/profile/${profile.profile_photo}`}
-            alt="profile"
-          />):( <p  className="profileDP " style={{fontSize:"14px", objectFit:"cover", backgroundColor:"gray"}}>upload a  photo <br /> <MdFileUpload />
-          </p> )}
-         
+          {profile.profile_photo ? (
+            <img
+              className="profileDP"
+              src={`http://localhost:7070/profile/${profile.profile_photo}`}
+              alt="profile"
+            />
+          ) : (
+            <p
+              className="profileDP "
+              style={{
+                fontSize: "14px",
+                objectFit: "cover",
+                backgroundColor: "gray",
+              }}
+            >
+              upload a photo <br /> <MdFileUpload />
+            </p>
+          )}
+
           <Button className="DpEditBTN" onClick={handleEditClick}>
             <MdEdit />
           </Button>
