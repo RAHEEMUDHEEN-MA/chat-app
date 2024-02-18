@@ -6,6 +6,13 @@ Chat application built using the MERN stack with Socket.io for real-time one-to-
 
 
 
+https://github.com/RAHEEMUDHEEN-MA/chat-app/assets/136678042/a7884047-64da-47c3-acfc-3d59f515f578
+
+
+
+
+
+
 login page :-
 
 
