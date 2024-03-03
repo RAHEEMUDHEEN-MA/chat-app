@@ -5,21 +5,15 @@ import RandomChat from "./RandomChat";
 import { GiMushroomHouse } from "react-icons/gi";
 
 const JoinRandomChat = ({ userdata, socket }) => {
-  const [name,setanme] = useState(userdata.name)
+  const name=userdata.name
   // const [name,setanme] = useState("tester")
   const [room, setRoom] = useState();
 
 
   const [showChat, setShowChat] = useState(false);
 
-  const joinRoom = () => {
-    // if (name === "" || room === "") {
-    //   alert("Error: Both name and room are required to join.");
-    // } else {
-    //   const data = { name, room };
-    //   socket.emit("joinRoom", data);
-    //   setShowChat(!showChat);
-    // }
+  const joinRoom = () => { 
+  
     if (!room || !name) {
         alert("provide details")
     }

@@ -6,6 +6,7 @@ import "../assets/styles/Login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { BASE_URL1, BASE_URL2 } from "../BaseURL";
 const Login = ({ setuserdata, setSocket }) => {
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
@@ -13,9 +14,7 @@ const Login = ({ setuserdata, setSocket }) => {
   const [authfailed, setAuthfailed] = useState("");
   const [loading, setLoading] = useState(false);
 
-  //  let date=new Date()
-  // date=date.toUTCString()
-  //  console.log("currentTimeAndDate 1111111111111111",date)
+
 
   const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ const Login = ({ setuserdata, setSocket }) => {
 
       try {
         const response = await axios.post(
-          "http://localhost:7070/chatapp/login",
+          `${BASE_URL1}/login`,
           {
             mobile: mobile,
             password: password,
@@ -42,7 +41,7 @@ const Login = ({ setuserdata, setSocket }) => {
           navigate("/home");
         }, 700);
 
-        const newsocket = io("http://localhost:7070");
+        const newsocket = io(`${BASE_URL2}`);
         setSocket(newsocket);
       } catch (error) {
         console.error("AxiosError:", error.response);

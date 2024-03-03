@@ -9,9 +9,10 @@ import { IoMdSend } from "react-icons/io";
 import moment from "moment-timezone";
 
 import FriendsProfile from "./FriendsProfile";
+import { BASE_URL1, BASE_URL2 } from "../BaseURL";
 
 const Chat2 = ({ userdata, socket }) => {
-  const userData = userdata.userdata;
+
 
   const friendID = useParams();
 
@@ -49,7 +50,7 @@ const Chat2 = ({ userdata, socket }) => {
     const fetchFriend = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:7070/chatapp/find/${friendID.id}`
+          `${BASE_URL1}/find/${friendID.id}`
         );
         setFriendMeta(response.data);
       } catch (error) {
@@ -62,7 +63,7 @@ const Chat2 = ({ userdata, socket }) => {
     const fetchChatHistory = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:7070/chatapp/chathistory",
+          `${BASE_URL1}/chathistory`,
           {
             sender_id: userdata._id,
             // sender_id: "65b0b0b29046aea7e722c9f5",
@@ -76,13 +77,13 @@ const Chat2 = ({ userdata, socket }) => {
         );
         setMessageList(response.data);
       } catch (error) {
-        if (error.response && error.response.status == 401) {
+        if (error.response && error.response.status === 401) {
           setTokenError(error.response.data.message);
         }
       }
     };
-    fetchChatHistory();
-  }, [friendID]);
+    fetchChatHistory(); 
+  }, [friendID,userdata._id]);
 
   //sending message---------------------------------------------
 
@@ -116,7 +117,7 @@ const Chat2 = ({ userdata, socket }) => {
         setMessageList((prevMessages) => [...prevMessages, message]);
       }
     });
-  }, [message]);
+  }, [message,socket,userdata._id]);
 
   useEffect(() => {
     setMessageList([]);
@@ -143,7 +144,7 @@ const Chat2 = ({ userdata, socket }) => {
         }, 500);
       }
     });
-  }, [typingStatus]);
+  }, [typingStatus,friendID.id,socket,userdata._id]);
 
   return (
     <div className="chat">
@@ -174,7 +175,7 @@ const Chat2 = ({ userdata, socket }) => {
         </Link>
         <div className="listItemProfile">
           
-          {friendMeta.profile_photo?( <img onClick={handleShow}  className="listItemDp" src={`http://localhost:7070/profile/${friendMeta.profile_photo}`} alt="" /> ):(<div className="listItemDp" onClick={handleShow}>
+          {friendMeta.profile_photo?( <img onClick={handleShow}  className="listItemDp" src={`${BASE_URL2}/profile/${friendMeta.profile_photo}`} alt="" /> ):(<div className="listItemDp" onClick={handleShow}>
             <FaUser size={25} />
           </div>)}
 
@@ -198,7 +199,7 @@ const Chat2 = ({ userdata, socket }) => {
           {messageList.map((chat) => (
             <div
               className="chatContentBody"
-              id={chat.sender_id == userdata._id ? "yourContent" : "none"}
+              id={chat.sender_id === userdata._id ? "yourContent" : "none"}
             >
               <div className="chatContentWraper">
                 <p className="chatContent">{chat.content}</p>
@@ -207,7 +208,7 @@ const Chat2 = ({ userdata, socket }) => {
                   {moment.utc(chat.date).tz("Asia/Kolkata").format("HH:mm")}
                 </p>
               </div>
-            </div>
+            </div> 
           ))}
         </div>
       </div>

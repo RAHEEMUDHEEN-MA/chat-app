@@ -6,6 +6,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdFileUpload } from "react-icons/md";
+import { BASE_URL1, BASE_URL2 } from "../BaseURL";
 
 const UserProfile = (userdata) => {
   const [profile, setprofile] = useState([]);
@@ -22,7 +23,7 @@ const UserProfile = (userdata) => {
     const fetchProfile = async () => {
       try {
         const resposnse = await axios.get(
-          `http://localhost:7070/chatapp/find/${userdata.userdata._id}`
+          `${BASE_URL1}/find/${userdata.userdata._id}`
         );
         setprofile(resposnse.data);
         setname(resposnse.data.name);
@@ -31,7 +32,7 @@ const UserProfile = (userdata) => {
       } catch (error) {}
     };
     fetchProfile();
-  }, [userdata]);
+  }, [userdata,profile]);
 
   ////////////////////////
   const token = JSON.parse(localStorage.getItem("token"));
@@ -45,7 +46,7 @@ const UserProfile = (userdata) => {
       profile_photo.append("file", image);
       profile_photo.append("userID", userdata.userdata._id);
       axios
-        .post("http://localhost:7070/chatapp/upload", profile_photo)
+        .post(`${BASE_URL1}/upload`, profile_photo)
         .then((res) => console.log(res))
         .catch((error) => console.log(error));
       console.log("profilee", profile_photo);
@@ -65,7 +66,7 @@ const UserProfile = (userdata) => {
     try {
       if (name !== "" && email !== "") {
         axios.put(
-          `http://localhost:7070/chatapp/editprofile`,
+          `${BASE_URL1}/editprofile`,
           {
             _id: userdata.userdata._id,
             name: name,
@@ -83,7 +84,7 @@ const UserProfile = (userdata) => {
         return;
       }
     } catch (error) {
-      if (error.response && error.response.status == 401) {
+      if (error.response && error.response.status === 401) {
         setTokenError(error.response.data.message);
       }
     }
@@ -118,7 +119,7 @@ const UserProfile = (userdata) => {
           {profile.profile_photo ? (
             <img
               className="profileDP"
-              src={`http://localhost:7070/profile/${profile.profile_photo}`}
+              src={`${BASE_URL2}/profile/${profile.profile_photo}`}
               alt="profile"
             />
           ) : (

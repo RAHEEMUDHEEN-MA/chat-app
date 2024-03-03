@@ -8,7 +8,7 @@
   padding: 12px 25px;
   border-radius: 0px 10px 0px 0px;
   display: flex;
-  align-items: start;
+  align-items: left;
   color: gray;
 }
 .profileForm {
@@ -59,7 +59,7 @@
   /* Add any additional styles you need */
 }
 
-/* Hide the default file input text */
+Hide the default file input text
 input[type="file"] {
   display: none;
 }
@@ -82,3 +82,4 @@ input[type="file"] {
     padding: 10px 50px;
   }
 }
+ 

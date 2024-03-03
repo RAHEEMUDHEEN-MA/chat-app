@@ -6,6 +6,7 @@ import "../assets/styles/Login.css";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import {  ClipLoader} from "react-spinners";
+import {  BASE_URL1 } from "../BaseURL";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -17,6 +18,7 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [nonMatchAlert, setNonMatchAlert] = useState("");
   const [notFilled, setNotFilled] = useState("");
+  console.log(notFilled)
   const [showPassword, setShowPassword] = useState(false);
   const [mobileAlreadyusedAlert, setMobileAlreadyusedAlert] = useState("");
   const navigate = useNavigate();
@@ -48,7 +50,7 @@ const SignUp = () => {
 
         try {
           const response = await axios.post(
-            "http://localhost:7070/chatapp/signup",
+            `${BASE_URL1}/signup`,
             {
               name,
               email,

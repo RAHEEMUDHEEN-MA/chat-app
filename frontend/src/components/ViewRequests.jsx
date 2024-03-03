@@ -6,38 +6,38 @@ import { FaUser } from "react-icons/fa";
 import { IoMdPersonAdd } from "react-icons/io";
 import { TiDeleteOutline } from "react-icons/ti";
 import { NavLink } from "react-router-dom";
+import { BASE_URL1, BASE_URL2 } from "../BaseURL";
 
 const ViewRequests = ({ userdata }) => {
   const [requests, setRequests] = useState([]);
   const [accepted, setAccepted] = useState(false);
-  const [rejected, setRejected] = useState(true);
+ 
 
 
-  const viewRequests = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:7070/chatapp/${userdata._id}/viewfriendrequest`
-        // `http://localhost:7070/chatapp/65b2121512b52d856a77a0f7/viewfriendrequest`
-      );
-      setRequests(response.data);
-    } catch (error) {
-      console.error("Error fetching friend requests:", error);
-    }
-  };
-
+ 
   useEffect(() => {
+    const viewRequests = async () => {
+      try {
+        const response = await axios.get(
+          `${BASE_URL1}/${userdata._id}/viewfriendrequest`
+          
+        );
+        setRequests(response.data);
+      } catch (error) {
+        console.error("Error fetching friend requests:", error);
+      }
+    };
+  
+
     viewRequests();
   }, [userdata, requests]);
 
-  // setRid(requests.friendRequest._id)
-  // console.log("requestID:",rid)
 
-  ////////////////////////////////////////////////
 
   const acceptRequest = async (id) => {
     try {
-      const response = await axios.put(
-        `http://localhost:7070/chatapp/${id}/acceptrequest`
+      await axios.put(
+        `${BASE_URL1}/${id}/acceptrequest`
       );
  
       setAccepted(true);
@@ -51,7 +51,7 @@ const ViewRequests = ({ userdata }) => {
   const rejectRequest = async (id) => {
     try {
       const response = await axios.put(
-        `http://localhost:7070/chatapp/${id}/rejectrequest`
+        `${BASE_URL1}/${id}/rejectrequest`
       );
       console.log("request rejected", response);
     } catch (error) {
@@ -65,8 +65,8 @@ const ViewRequests = ({ userdata }) => {
        src="https://cdni.iconscout.com/illustration/premium/thumb/react-native-mobile-app-6578313-5501855.png"
     alt=""
   />; */}
-      <h1>Friend Requests</h1>
-      {requests == 0 ? (
+      <h1>Friend Requests</h1> 
+      {requests === 0 ? (
         <div style={{ display: "flex", flexDirection: "column", gap: "180px" }}>
           <h4 style={{ color: "rgba(48, 79, 125, 0.536)" }}>No Requests</h4>{" "}
           <NavLink to="/home/search">find Friends</NavLink>
@@ -79,7 +79,7 @@ const ViewRequests = ({ userdata }) => {
           <div key={response._id} className="requests">
             
 
-          {response.senderInfo.profile_photo?( <img  className="reqdp" src={`http://localhost:7070/profile/${response.senderInfo.profile_photo}`} alt="profile" /> ):(<div className="reqdp">
+          {response.senderInfo.profile_photo?( <img  className="reqdp" src={`${BASE_URL2}/profile/${response.senderInfo.profile_photo}`} alt="profile" /> ):(<div className="reqdp">
               <FaUser size={30} />
             </div>)}
 
@@ -90,7 +90,7 @@ const ViewRequests = ({ userdata }) => {
                 </span>{" "}
                 Requested to add you
               </p>
-              <a href=""></a>
+             
             </div>
             <div className="btns_holder">
             <Button

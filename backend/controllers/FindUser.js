@@ -15,6 +15,6 @@ const FindUser = async (req, res) => {
   }
  
     
-};  
+};   
 
 module.exports=FindUser

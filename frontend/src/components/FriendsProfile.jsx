@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import "../assets/styles/FriendsProfile.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL1, BASE_URL2 } from "../BaseURL";
 
 const FriendsProfile = ({ data }) => {
   const { friendMeta, userdata } = data;
@@ -15,7 +16,7 @@ const FriendsProfile = ({ data }) => {
 
     try {
       const response = await axios.put(
-        "http://localhost:7070/chatapp/unfriend",
+        `${BASE_URL1}/unfriend`,
         {
           requestingId: userdata._id,
           targetId: friendMeta._id,
@@ -35,7 +36,7 @@ const FriendsProfile = ({ data }) => {
         {friendMeta.profile_photo ? (
           <img
             className="dpIMAGE"
-            src={`http://localhost:7070/profile/${friendMeta.profile_photo}`}
+            src={`${BASE_URL2}/profile/${friendMeta.profile_photo}`}
             alt="dp"
           />
         ) : (

@@ -9,6 +9,7 @@ import { IoPersonRemoveSharp } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { BarLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL1 } from "../BaseURL";
 
 const AddFriend = ({ userdata }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -19,7 +20,7 @@ const AddFriend = ({ userdata }) => {
   const [resultStatus, setResultStatus] = useState("");
   const [smShow, setSmShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [reqSended, setReqSended] = useState(false);
+
 
   console.log("recieverID  :", recieverID);
   console.log("senderID :", senderID);
@@ -33,7 +34,7 @@ const AddFriend = ({ userdata }) => {
     // e.preventDefault();
     try {
       const response = await axios.get(
-        `http://localhost:7070/chatapp/search/${searchInput}`
+        `${BASE_URL1}/search/${searchInput}`
       );
       setTimeout(() => {
         setLoading(false);
@@ -53,7 +54,7 @@ const AddFriend = ({ userdata }) => {
   };
 
   const sendRequest = async () => {
-    const token=localStorage.getItem("token")
+    
     setsenderID(userdata._id);
     console.log("senderID:".senderID);
     setRecieverID(searchResult._id);
@@ -61,7 +62,7 @@ const AddFriend = ({ userdata }) => {
     try {
       if (senderID !== "" && recieverID !== "") {
         const response = await axios.post(
-          "http://localhost:7070/chatapp/sendfriendrequest",
+          `${BASE_URL1}/sendfriendrequest`,
           {
             sender_Id: senderID,
             reciever_Id: recieverID,
@@ -83,7 +84,7 @@ const AddFriend = ({ userdata }) => {
 
     try {
       const response = await axios.put(
-        "http://localhost:7070/chatapp/unfriend",
+        `${BASE_URL1}/unfriend`,
         {
           requestingId: senderID,
           targetId: recieverID,
@@ -149,7 +150,7 @@ const AddFriend = ({ userdata }) => {
         <div className="userTile">
           <div className="primaryContainer">
             
-            {searchResult.profile_photo?(<img  className="userdp" src={`http://localhost:7070/profile/${searchResult.profile_photo}`} alt="dp" />):(<div className="userdp">
+            {searchResult.profile_photo?(<img  className="userdp" src={`${BASE_URL1}/profile/${searchResult.profile_photo}`} alt="dp" />):(<div className="userdp">
               <FaUser size={30} />
             </div>)}
             <div>
@@ -165,7 +166,6 @@ const AddFriend = ({ userdata }) => {
             </div>
           </div>
           <div></div>
-
           {senderID !== recieverID ? (
             <div className="btnContainer">
               {!searchResult.connections.includes(senderID) ? (

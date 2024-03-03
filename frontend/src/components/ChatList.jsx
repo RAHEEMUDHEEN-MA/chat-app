@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../assets/styles/ChatList.css";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
-import { HiOutlineDotsVertical } from "react-icons/hi";
 
-import { ClimbingBoxLoader, GridLoader, ScaleLoader } from "react-spinners";
+
+import { ScaleLoader } from "react-spinners";
+import { BASE_URL1, BASE_URL2 } from "../BaseURL";
 // import io from "socket.io-client";
 
 const ChatList = ({ userdata }) => {
@@ -21,7 +22,7 @@ const ChatList = ({ userdata }) => {
     const loadlist = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:7070/chatapp/chatlist/${_id}`
+          `${BASE_URL1}/chatlist/${_id}`
         );
         setTimeout(() => {
           setFriends(response.data.user.connections);
@@ -57,7 +58,7 @@ const ChatList = ({ userdata }) => {
             <div className="chatListItem">
               <div className="listItemDp">
                  
-                  {friend.profile_photo?( <img  className="chatlistItemDP" src={`http://localhost:7070/profile/${friend.profile_photo}`} alt="dp" /> ):( <FaUser   size={25}/>)}
+                  {friend.profile_photo?( <img  className="chatlistItemDP" src={`${BASE_URL2}/profile/${friend.profile_photo}`} alt="dp" /> ):( <FaUser   size={25}/>)}
 
               </div>
               <div>

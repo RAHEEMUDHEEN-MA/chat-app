@@ -6,7 +6,8 @@ import { MdPersonSearch } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 import { CgLogOut } from "react-icons/cg";
 import { GiMushroomHouse } from "react-icons/gi";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
+import { BASE_URL2 } from "../BaseURL";
 
 // const chatIcon=require("../assets/icons&logos/chat-96.png")
 // import chaticon from '../assets/styles/icons8-twitter-circled-50.png'
@@ -60,7 +61,7 @@ const SideNavBar = ({ userdata, socket }) => {
               {/* <FaUser  size={25}/> */}
               {userdata.profile_photo?(  <img
             className="profileDpSideBar"
-            src={`http://localhost:7070/profile/${userdata.profile_photo}`}
+            src={`${BASE_URL2}/profile/${userdata.profile_photo}`}
             alt="profile"
           />):( <h1>{USERDP}</h1>)}
              

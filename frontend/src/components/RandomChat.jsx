@@ -60,17 +60,17 @@ function RandomChat({ socket, room, name }) {
               return (
                 <div
                   className="message"
-                  id={content.author == name ? "yourmessage" : "abc"}
+                  id={content.author === name ? "yourmessage" : "abc"}
                 >
                   <div
                     className="messageContent"
-                    id={content.author == name ? "yourcontent" : "abc"}
+                    id={content.author === name ? "yourcontent" : "abc"}
                   >
                     <p>{content.message}</p>
                   </div>
                   <div
                     className="messageMeta"
-                    id={content.author == name ? "yourmeta" : "abc"}
+                    id={content.author === name ? "yourmeta" : "abc"}
                   >
                     <p className="chat-time">{content.time}</p>
                     <p className="chat-author">{content.author}</p>
@@ -80,6 +80,8 @@ function RandomChat({ socket, room, name }) {
             })}
           </ScrollToBottom>
         </div>
+
+        
         <div className=" d-flex chat-footer gap-3 p-2  w-100  ">
           <FormControl
             value={curMessage}

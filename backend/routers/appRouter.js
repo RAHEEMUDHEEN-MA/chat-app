@@ -21,6 +21,7 @@ const PhotoUpload = require('../middlewares/uploadProfilePhoto.js')
 
 const appRouter=express.Router()
 
+
 appRouter.route('/test').post(test)
 appRouter.route('/ok').get(tester) 
   
@@ -40,7 +41,8 @@ appRouter.route('/:rid/acceptrequest').put(AcceptFriendRequest)
 appRouter.route('/:rid/rejectrequest').put(RejectFriendRequest)
 appRouter.route('/unfriend').put(UnFriend)
 appRouter.route('/sendmessage').post(VerifyToken,SendMessage)
-appRouter.route('/chathistory').post(VerifyToken,LoadChatHistory)
+appRouter.route('/chathistory').post(VerifyToken,LoadChatHistory) 
+
 
 
  
