@@ -1,5 +1,7 @@
 # MERN Stack Socket.io Chat App
 
+https://chat-app-frontend-lake.vercel.app/
+
 Chat application built using the MERN stack with Socket.io for real-time one-to-one chat across users, and utilised the multer middleware  library for profile picture functionality.
 
 ## Previews
